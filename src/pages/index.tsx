@@ -101,8 +101,7 @@ function Counter({ end, title, suffix = '' }: CounterProps) {
 
 export default function LandingPage() {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const servicesAnimation = useScrollAnimation();
   const workAnimation = useScrollAnimation();
@@ -119,15 +118,10 @@ export default function LandingPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitMessage('Thank you! We\'ll be in touch soon.');
-      setTimeout(() => setSubmitMessage(''), 5000);
-    }, 1000);
+  // Handle form submission success
+  const handleFormSubmit = () => {
+    setFormSubmitted(true);
+    setTimeout(() => setFormSubmitted(false), 5000);
   };
 
   return (
@@ -284,7 +278,7 @@ export default function LandingPage() {
         </div>
       )}
 
-      {/* Contact Section */}
+      {/* Contact Section with Formspree */}
       <div 
         id="contact" 
         ref={contactAnimation.ref}
@@ -312,7 +306,7 @@ export default function LandingPage() {
                     </div>
                     <div className="text-left">
                       <p className="text-gray-300 text-sm">Email</p>
-                      <p className="text-white">hello@studio.com</p>
+                      <p className="text-white">ferruscarea30@gmail.com</p>
                     </div>
                   </div>
                   
@@ -383,57 +377,73 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Contact Form with Formspree */}
             <div className="bg-gray-800 rounded-lg p-8">
               <h3 className="text-2xl font-light mb-6 text-left">Send us a message</h3>
-              <form onSubmit={handleContactSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="contact-name"
-                    className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
-                    placeholder="Your name"
-                    required
-                  />
+              {formSubmitted ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="text-xl font-medium mb-2">Thank You!</h4>
+                  <p className="text-gray-300">Your message has been sent successfully. We'll get back to you soon!</p>
                 </div>
-                <div>
-                  <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="contact-email"
-                    className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
-                    placeholder="your.email@example.com"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">
-                    Message
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    rows={4}
-                    className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
-                    placeholder="Tell us about your project..."
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-white text-gray-900 py-3 rounded-full hover:bg-gray-200 transition-colors font-medium disabled:opacity-50"
+              ) : (
+                <form 
+                  action="https://formspree.io/f/meornwrg" 
+                  method="POST"
+                  className="space-y-6"
+                  onSubmit={handleFormSubmit}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-                {submitMessage && (
-                  <p className="text-center text-green-400 mt-4">{submitMessage}</p>
-                )}
-              </form>
+                  <div>
+                    <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">
+                      Message
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows={4}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
+                      placeholder="Tell us about your project..."
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-white text-gray-900 py-3 rounded-full hover:bg-gray-200 transition-colors font-medium"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
