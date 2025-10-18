@@ -135,9 +135,9 @@ export default function LandingPage() {
               Studio
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">Services</a>
-              <a href="#work" className="text-gray-600 hover:text-gray-900 transition-colors">Work</a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+              <a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">Servicios</a>
+              <a href="#work" className="text-gray-600 hover:text-gray-900 transition-colors">Trabajos</a>
+              <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Contacto</a>
             </div>
           </div>
         </div>
@@ -148,14 +148,14 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-6">
-              Web Design &
-              <span className="block text-gray-500">Social Content</span>
+              Diseño Web
+              <span className="block text-gray-500">Redes sociales</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-              We create stunning digital experiences and engaging social media content that connects brands with their audience.
+              Creamos experiencias digitales y contenido para redes sociales. También creamos campañas digitales para captación de clientes potenciales.
             </p>
             <a href="#contact" className="inline-block bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors">
-              Start Your Project
+              Trabajemos juntos
             </a>
           </div>
         </div>
@@ -192,20 +192,20 @@ export default function LandingPage() {
         className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Our Services</h2>
+          <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Nuestros Servicios</h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div className="text-center">
               <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6" />
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Web Design</h3>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">Diseño Web</h3>
               <p className="text-gray-600">
                 Custom websites that blend beautiful design with seamless functionality. From concept to launch, we build digital experiences that convert.
               </p>
             </div>
             <div className="text-center">
               <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6" />
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Social Media Content</h3>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">Contenido para Redes Sociales</h3>
               <p className="text-gray-600">
-                Engaging content that tells your brand story. We create, schedule, and manage social media campaigns that grow your audience.
+                Campañas digitales personalizadas para captación de clientes potenciales. Creamos, programamos, y manejamos las cuentas para crecer con tu audiencia.
               </p>
             </div>
           </div>
