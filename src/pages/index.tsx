@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface GalleryItem {
   id: number;
@@ -16,6 +16,37 @@ const galleryItems: GalleryItem[] = [
   { id: 6, title: 'Product Launch', category: 'Social Media', description: 'Social media launch campaign' },
 ];
 
+function useScrollAnimation() {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return { ref, isVisible };
+}
+
 export default function LandingPage() {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [formData, setFormData] = useState({
@@ -27,7 +58,11 @@ export default function LandingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
-  // Close popup on Escape key
+  const heroAnimation = useScrollAnimation();
+  const servicesAnimation = useScrollAnimation();
+  const workAnimation = useScrollAnimation();
+  const contactAnimation = useScrollAnimation();
+
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
@@ -50,7 +85,6 @@ export default function LandingPage() {
     setIsSubmitting(true);
     
     const form = new FormData();
-    // Replace entry IDs with your actual Google Form field entry IDs
     form.append('entry.1234567890', formData.name);
     form.append('entry.1234567891', formData.email);
     form.append('entry.1234567892', formData.service);
@@ -89,7 +123,12 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section 
+        ref={heroAnimation.ref as React.RefObject<HTMLElement>}
+        className={`pt-32 pb-20 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
+          heroAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-6">
@@ -107,7 +146,13 @@ export default function LandingPage() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section 
+        id="services" 
+        ref={servicesAnimation.ref as React.RefObject<HTMLElement>}
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 transition-all duration-1000 delay-200 ${
+          servicesAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`}
+      >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Our Services</h2>
           <div className="grid md:grid-cols-2 gap-12">
@@ -130,7 +175,13 @@ export default function LandingPage() {
       </section>
 
       {/* Gallery Section */}
-      <section id="work" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section 
+        id="work" 
+        ref={workAnimation.ref as React.RefObject<HTMLElement>}
+        className={`py-20 px-4 sm:px-6 lg:px-8 transition-all duration-1000 delay-300 ${
+          workAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`}
+      >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Our Work</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -187,7 +238,13 @@ export default function LandingPage() {
       )}
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section 
+        id="contact" 
+        ref={contactAnimation.ref as React.RefObject<HTMLElement>}
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 transition-all duration-1000 delay-400 ${
+          contactAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`}
+      >
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-12">Contact Us</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -270,6 +327,8 @@ export default function LandingPage() {
       <footer className="py-8 text-center text-gray-500 text-sm">
         &copy; {new Date().getFullYear()} Studio. All rights reserved.
       </footer>
+
+      {/* WhatsApp Floating Button */}
       <a
         href="https://wa.me/5533313935"
         target="_blank"
