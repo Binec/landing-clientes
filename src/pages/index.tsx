@@ -91,7 +91,7 @@ export default function LandingPage() {
     form.append('entry.1234567893', formData.message);
     
     try {
-      await fetch('https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse', {
+      await fetch('https://docs.google.com/forms/d/e/1YMWX3lR9g9pnw3C5VvlBhFIfdQbtEekIuuNEOk-J4S4/formResponse', {
         method: 'POST',
         body: form,
         mode: 'no-cors'
