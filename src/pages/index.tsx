@@ -18,7 +18,7 @@ const galleryItems: GalleryItem[] = [
 
 function useScrollAnimation() {
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,17 +29,18 @@ function useScrollAnimation() {
       },
       {
         threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        rootMargin: '0px 0px -50px 0px'
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -58,7 +59,6 @@ export default function LandingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
-  const heroAnimation = useScrollAnimation();
   const servicesAnimation = useScrollAnimation();
   const workAnimation = useScrollAnimation();
   const contactAnimation = useScrollAnimation();
@@ -123,12 +123,7 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section 
-        ref={heroAnimation.ref as React.RefObject<HTMLElement>}
-        className={`pt-32 pb-20 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
-          heroAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-        }`}
-      >
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-6">
@@ -146,10 +141,10 @@ export default function LandingPage() {
       </section>
 
       {/* Services Section */}
-      <section 
+      <div 
         id="services" 
-        ref={servicesAnimation.ref as React.RefObject<HTMLElement>}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 transition-all duration-1000 delay-200 ${
+        ref={servicesAnimation.ref}
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 transition-all duration-1000 ${
           servicesAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}
       >
@@ -172,13 +167,13 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Gallery Section */}
-      <section 
+      <div 
         id="work" 
-        ref={workAnimation.ref as React.RefObject<HTMLElement>}
-        className={`py-20 px-4 sm:px-6 lg:px-8 transition-all duration-1000 delay-300 ${
+        ref={workAnimation.ref}
+        className={`py-20 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
           workAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}
       >
@@ -203,7 +198,7 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Popup Modal for Gallery Item */}
       {selectedItem && (
@@ -221,10 +216,10 @@ export default function LandingPage() {
           >
             <button
               onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl leading-none"
               aria-label="Close popup"
             >
-              &times;
+              ×
             </button>
             <h3 id="modal-title" className="text-2xl font-semibold mb-2 text-gray-900">
               {selectedItem.title}
@@ -238,10 +233,10 @@ export default function LandingPage() {
       )}
 
       {/* Contact Section */}
-      <section 
+      <div 
         id="contact" 
-        ref={contactAnimation.ref as React.RefObject<HTMLElement>}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 transition-all duration-1000 delay-400 ${
+        ref={contactAnimation.ref}
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 transition-all duration-1000 ${
           contactAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}
       >
@@ -321,7 +316,7 @@ export default function LandingPage() {
             )}
           </form>
         </div>
-      </section>
+      </div>
 
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 text-sm">
