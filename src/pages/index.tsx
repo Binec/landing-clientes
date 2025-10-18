@@ -8,9 +8,9 @@ interface GalleryItem {
 }
 
 const galleryItems: GalleryItem[] = [
-  { id: 1, title: 'Brand Identity', category: 'Web Design', description: 'Complete brand identity design for tech startup' },
-  { id: 2, title: 'Social Campaign', category: 'Social Media', description: 'Instagram campaign for fashion brand' },
-  { id: 3, title: 'E-commerce Site', category: 'Web Design', description: 'Modern e-commerce platform design' },
+  { id: 1, title: 'Identidad de Marca', category: 'Diseño Web', description: 'Diseño de la identidad de marca y sitio web' },
+  { id: 2, title: 'Camapaña en redes sociales', category: 'Redes Sociales', description: 'Camapañas para fb, instagram' },
+  { id: 3, title: 'E-commerce', category: 'Web Design', description: 'Diseño moderno para un ecommerce' },
   { id: 4, title: 'Content Series', category: 'Social Media', description: 'Weekly content series for fitness brand' },
   { id: 5, title: 'Portfolio Website', category: 'Web Design', description: 'Creative portfolio for photographer' },
   { id: 6, title: 'Product Launch', category: 'Social Media', description: 'Social media launch campaign' },
@@ -48,20 +48,66 @@ function useScrollAnimation() {
   return { ref, isVisible };
 }
 
+interface CounterProps {
+  end: number;
+  title: string;
+  suffix?: string;
+}
+
+function Counter({ end, title, suffix = '' }: CounterProps) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          let startTime: number | undefined;
+          const duration = 2000; // 2 seconds
+
+          const animateCount = (timestamp: number) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            
+            setCount(Math.floor(progress * end));
+
+            if (progress < 1) {
+              requestAnimationFrame(animateCount);
+            }
+          };
+
+          requestAnimationFrame(animateCount);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [end]);
+
+  return (
+    <div ref={ref} className="text-center">
+      <div className="text-4xl font-bold text-white mb-2">
+        {count}{suffix}
+      </div>
+      <div className="text-gray-300">{title}</div>
+    </div>
+  );
+}
+
 export default function LandingPage() {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    service: '',
-    message: ''
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
   const servicesAnimation = useScrollAnimation();
   const workAnimation = useScrollAnimation();
   const contactAnimation = useScrollAnimation();
+  const statsAnimation = useScrollAnimation();
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -73,37 +119,15 @@ export default function LandingPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    const form = new FormData();
-    form.append('entry.1234567890', formData.name);
-    form.append('entry.1234567891', formData.email);
-    form.append('entry.1234567892', formData.service);
-    form.append('entry.1234567893', formData.message);
-    
-    try {
-      await fetch('https://docs.google.com/forms/d/e/1YMWX3lR9g9pnw3C5VvlBhFIfdQbtEekIuuNEOk-J4S4/formResponse', {
-        method: 'POST',
-        body: form,
-        mode: 'no-cors'
-      });
-      setSubmitMessage('Thank you! We\'ll be in touch soon.');
-      setFormData({ name: '', email: '', service: '', message: '' });
-    } catch (error) {
-      setSubmitMessage('Something went wrong. Please try again.');
-    } finally {
+    // Simulate form submission
+    setTimeout(() => {
       setIsSubmitting(false);
+      setSubmitMessage('Thank you! We\'ll be in touch soon.');
       setTimeout(() => setSubmitMessage(''), 5000);
-    }
+    }, 1000);
   };
 
   return (
@@ -112,7 +136,10 @@ export default function LandingPage() {
       <nav className="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-sm z-40 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="text-2xl font-bold text-gray-900">Studio</div>
+            <div className="flex items-center text-2xl font-bold text-gray-900">
+              <div className="w-8 h-8 bg-gray-900 rounded-full mr-2"></div>
+              Studio
+            </div>
             <div className="hidden md:flex space-x-8">
               <a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">Services</a>
               <a href="#work" className="text-gray-600 hover:text-gray-900 transition-colors">Work</a>
@@ -139,6 +166,25 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* Stats Banner */}
+      <div 
+        ref={statsAnimation.ref}
+        style={{
+          opacity: statsAnimation.isVisible ? 1 : 0,
+          transform: statsAnimation.isVisible ? 'translateY(0)' : 'translateY(3rem)',
+          transition: 'all 1s ease-out'
+        }}
+        className="py-16 bg-gray-900 text-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Counter end={35} title="Clients" />
+            <Counter end={100} suffix="k" title="Views" />
+            <Counter end={100} suffix="+" title="Websites and Apps" />
+          </div>
+        </div>
+      </div>
 
       {/* Services Section */}
       <div 
@@ -247,88 +293,154 @@ export default function LandingPage() {
           transform: contactAnimation.isVisible ? 'translateY(0)' : 'translateY(3rem)',
           transition: 'all 1s ease-out'
         }}
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white"
       >
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-light text-center text-gray-900 mb-12">Contact Us</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-gray-700 font-medium mb-1">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-900"
-              />
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-light mb-12">Get In Touch</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Contact Info */}
+            <div className="space-y-8">
+              <div className="text-left">
+                <h3 className="text-2xl font-light mb-6">Contact Information</h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div className="text-left">
+                      <p className="text-gray-300 text-sm">Email</p>
+                      <p className="text-white">hello@studio.com</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <div className="text-left">
+                      <p className="text-gray-300 text-sm">Phone</p>
+                      <p className="text-white">+1 (555) 123-4567</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="text-left">
+                <h3 className="text-2xl font-light mb-6">Follow Us</h3>
+                <div className="flex space-x-4">
+                  <a
+                    href="https://behance.net"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    aria-label="Behance"
+                  >
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.920 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    aria-label="Instagram"
+                  >
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://soundcloud.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    aria-label="SoundCloud"
+                  >
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M11.56 8.87c-.12 0-.24-.02-.36-.04C10.84 8.59 10.37 8.5 9.9 8.5c-1.6 0-3.11.62-4.24 1.76-.31.31-.31.82 0 1.13.15.15.36.23.56.23s.41-.08.56-.23c.83-.83 1.93-1.29 3.12-1.29.28 0 .56.03.83.09.31.07.64-.12.73-.43.17-.57.48-1.09.91-1.5.42-.42.95-.73 1.5-.91.31-.09.5-.41.43-.73-.09-.31-.41-.5-.73-.43-.74.19-1.41.57-1.97 1.12-.56.56-.94 1.23-1.13 1.97-.06.2-.23.35-.44.35zm7.51-3.45c-.12 0-.24-.02-.36-.04-.36-.09-.73-.14-1.11-.14-2.03 0-3.93.79-5.36 2.22-.31.31-.31.82 0 1.13.15.15.36.23.56.23s.41-.08.56-.23c1.15-1.15 2.68-1.79 4.3-1.79.28 0 .56.03.83.09.31.07.64-.12.73-.43.24-.81.69-1.56 1.32-2.19.63-.63 1.38-1.08 2.19-1.32.31-.09.5-.41.43-.73-.09-.31-.41-.5-.73-.43-.98.24-1.89.75-2.65 1.51-.76.76-1.27 1.67-1.51 2.65-.06.2-.23.35-.44.35z"/>
+                      <path d="M17.67 15.33c-.18 0-.36-.05-.52-.15-.4-.27-.51-.78-.24-1.18.27-.4.78-.51 1.18-.24.4.27.51.78.24 1.18-.16.24-.42.39-.66.39zm-1.33 1.33c-.18 0-.36-.05-.52-.15-.4-.27-.51-.78-.24-1.18.27-.4.78-.51 1.18-.24.4.27.51.78.24 1.18-.16.24-.42.39-.66.39zm-1.33 1.33c-.18 0-.36-.05-.52-.15-.4-.27-.51-.78-.24-1.18.27-.4.78-.51 1.18-.24.4.27.51.78.24 1.18-.16.24-.42.39-.66.39zm-1.33 1.33c-.18 0-.36-.05-.52-.15-.4-.27-.51-.78-.24-1.18.27-.4.78-.51 1.18-.24.4.27.51.78.24 1.18-.16.24-.42.39-.66.39zm-1.33 1.33c-.18 0-.36-.05-.52-.15-.4-.27-.51-.78-.24-1.18.27-.4.78-.51 1.18-.24.4.27.51.78.24 1.18-.16.24-.42.39-.66.39zm-1.33 1.33c-.18 0-.36-.05-.52-.15-.4-.27-.51-.78-.24-1.18.27-.4.78-.51 1.18-.24.4.27.51.78.24 1.18-.16.24-.42.39-.66.39z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
-            <div>
-              <label htmlFor="email" className="block text-gray-700 font-medium mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-900"
-              />
+
+            {/* Contact Form */}
+            <div className="bg-gray-800 rounded-lg p-8">
+              <h3 className="text-2xl font-light mb-6 text-left">Send us a message</h3>
+              <form onSubmit={handleContactSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">
+                    Message
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    rows={4}
+                    className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
+                    placeholder="Tell us about your project..."
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-white text-gray-900 py-3 rounded-full hover:bg-gray-200 transition-colors font-medium disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </button>
+                {submitMessage && (
+                  <p className="text-center text-green-400 mt-4">{submitMessage}</p>
+                )}
+              </form>
             </div>
-            <div>
-              <label htmlFor="service" className="block text-gray-700 font-medium mb-1">
-                Service Interested In
-              </label>
-              <select
-                id="service"
-                name="service"
-                value={formData.service}
-                onChange={handleInputChange}
-                required
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-900"
-              >
-                <option value="" disabled>Select a service</option>
-                <option value="Web Design">Web Design</option>
-                <option value="Social Media Content">Social Media Content</option>
-                <option value="Both">Both</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-gray-700 font-medium mb-1">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                rows={4}
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-900"
-              />
-            </div>
-            <div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gray-900 text-white py-3 rounded-full hover:bg-gray-800 transition-colors disabled:opacity-50"
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </div>
-            {submitMessage && (
-              <p className="text-center text-gray-700 mt-4">{submitMessage}</p>
-            )}
-          </form>
+          </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="py-8 text-center text-gray-500 text-sm">
+      <footer className="py-8 text-center text-gray-500 text-sm bg-gray-900 border-t border-gray-800">
         &copy; {new Date().getFullYear()} Studio. All rights reserved.
       </footer>
 
@@ -337,34 +449,11 @@ export default function LandingPage() {
         href="https://wa.me/5533313935"
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          position: 'fixed',
-          bottom: '1.5rem',
-          right: '1.5rem',
-          width: '4rem',
-          height: '4rem',
-          backgroundColor: '#25D366',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-          zIndex: 9999,
-          transition: 'all 0.3s ease',
-          color: 'white'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'scale(1.1)';
-          e.currentTarget.style.backgroundColor = '#20BA5A';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.backgroundColor = '#25D366';
-        }}
+        className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all hover:scale-110 z-50"
         aria-label="Contact us on WhatsApp"
       >
         <svg
-          style={{ width: '2rem', height: '2rem' }}
+          className="w-8 h-8 text-white"
           fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
