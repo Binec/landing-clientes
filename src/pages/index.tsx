@@ -9,6 +9,12 @@ interface GalleryItem {
   images: number[];
 }
 
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 const galleryItems: GalleryItem[] = [
   { id: 1, title: 'Identidad de Marca', category: 'Diseño Web', description: 'Diseño completo de identidad de marca y sitio web corporativo con enfoque moderno y minimalista.', images: [1, 2, 3] },
   { id: 2, title: 'Campaña Social', category: 'Redes Sociales', description: 'Campañas integrales para Facebook e Instagram con contenido visual atractivo y estrategias de engagement.', images: [1, 2, 3] },
@@ -108,6 +114,12 @@ export default function MainContainer() {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    message: ''
+  });
 
   // Animations
   const servicesAnimation = useScrollAnimation();
@@ -181,6 +193,48 @@ export default function MainContainer() {
   const prevImage = () => {
     if (selectedItem) {
       setCurrentImageIndex((prev) => (prev - 1 + selectedItem.images.length) % selectedItem.images.length);
+    }
+  };
+
+  // Form handlers
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id.replace('contact-', '')]: value
+    }));
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://formspree.io/f/meornwrg', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New contact form submission from ${formData.name}`
+        }),
+      });
+
+      if (response.ok) {
+        setFormSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setFormSubmitted(false), 5000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Sorry, there was an error sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -733,23 +787,52 @@ export default function MainContainer() {
                 </div>
               ) : (
                 <form 
-                  onSubmit={(e) => { e.preventDefault(); setFormSubmitted(true); setTimeout(() => setFormSubmitted(false), 5000); }}
+                  onSubmit={handleFormSubmit}
                   className="space-y-6"
                 >
                   <div>
                     <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">Name</label>
-                    <input type="text" id="contact-name" required className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" />
+                    <input 
+                      type="text" 
+                      id="contact-name" 
+                      required 
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
+                    />
                   </div>
                   <div>
                     <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">Email</label>
-                    <input type="email" id="contact-email" required className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" />
+                    <input 
+                      type="email" 
+                      id="contact-email" 
+                      required 
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
+                    />
                   </div>
                   <div>
                     <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">Message</label>
-                    <textarea id="contact-message" rows={4} required className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" />
+                    <textarea 
+                      id="contact-message" 
+                      rows={4} 
+                      required 
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
+                    />
                   </div>
-                  <button type="submit" className="w-full bg-white text-gray-900 py-3 rounded-full hover:bg-gray-200 transition-all hover:scale-105 hover:shadow-lg transform font-medium">
-                    ENVIAR MENSAJE
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className={`w-full py-3 rounded-full transition-all hover:shadow-lg transform font-medium ${
+                      isSubmitting 
+                        ? 'bg-gray-600 cursor-not-allowed' 
+                        : 'bg-white text-gray-900 hover:bg-gray-200 hover:scale-105'
+                    }`}
+                  >
+                    {isSubmitting ? 'SENDING...' : 'ENVIAR MENSAJE'}
                   </button>
                 </form>
               )}
