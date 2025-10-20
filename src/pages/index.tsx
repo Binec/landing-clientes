@@ -468,6 +468,16 @@ export default function MainContainer() {
               </p>
             </div>
           </div>
+          
+          {/* Added CTA below services grid */}
+          <div className="mt-16 text-center">
+            <button
+              onClick={() => navigateTo('contact')}
+              className="inline-block bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-all hover:scale-105 hover:shadow-lg transform"
+            >
+              Cotizar mi proyecto
+            </button>
+          </div>
         </div>
       </div>
 
@@ -572,7 +582,7 @@ export default function MainContainer() {
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`h-2 rounded-full transition-all duration-300 ${
+                      className={`h-2 rounded-full transition-all duration-300 ${ 
                         index === currentImageIndex ? 'bg-gray-900 w-6' : 'bg-gray-300 w-2 hover:bg-gray-400'
                       }`}
                       aria-label={`Go to image ${index + 1}`}
