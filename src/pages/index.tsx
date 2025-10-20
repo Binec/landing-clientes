@@ -12,6 +12,7 @@ interface GalleryItem {
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   message: string;
 }
 
@@ -118,6 +119,7 @@ export default function MainContainer() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    phone: '',
     message: ''
   });
 
@@ -218,6 +220,7 @@ export default function MainContainer() {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
+          phone: formData.phone,
           message: formData.message,
           _subject: `New contact form submission from ${formData.name}`
         }),
@@ -225,7 +228,7 @@ export default function MainContainer() {
 
       if (response.ok) {
         setFormSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', message: '' });
         setTimeout(() => setFormSubmitted(false), 5000);
       } else {
         throw new Error('Form submission failed');
@@ -484,7 +487,7 @@ export default function MainContainer() {
             </div>
             {/* Web Apps */}
             <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-6 bg-purpl e-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-purple-200 transition-all duration-300">
+              <div className="w-20 h-20 mx-auto mb-6 bg-purple-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-purple-200 transition-all duration-300">
                 <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
@@ -810,7 +813,17 @@ export default function MainContainer() {
                       className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
                     />
                   </div>
-                  
+                  <div>
+                    <label htmlFor="contact-phone" className="block text-gray-300 font-medium mb-2 text-left">Teléfono</label>
+                    <input 
+                      type="tel" 
+                      id="contact-phone" 
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
+                      placeholder="Opcional"
+                    />
+                  </div>
                   <div>
                     <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">Mensaje</label>
                     <textarea 
