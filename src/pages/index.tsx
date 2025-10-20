@@ -5,15 +5,16 @@ interface GalleryItem {
   title: string;
   category: string;
   description: string;
+  images: number[];
 }
 
 const galleryItems: GalleryItem[] = [
-  { id: 1, title: 'Identidad de Marca', category: 'Diseño Web', description: 'Diseño de la identidad de marca y sitio web' },
-  { id: 2, title: 'Camapaña en redes sociales', category: 'Redes Sociales', description: 'Camapañas para fb, instagram' },
-  { id: 3, title: 'E-commerce', category: 'Web Design', description: 'Diseño moderno para un ecommerce' },
-  { id: 4, title: 'Content Series', category: 'Social Media', description: 'Weekly content series for fitness brand' },
-  { id: 5, title: 'Portfolio Website', category: 'Web Design', description: 'Creative portfolio for photographer' },
-  { id: 6, title: 'Product Launch', category: 'Social Media', description: 'Social media launch campaign' },
+  { id: 1, title: 'Identidad de Marca', category: 'Diseño Web', description: 'Diseño completo de identidad de marca y sitio web corporativo con enfoque moderno y minimalista.', images: [1, 2, 3] },
+  { id: 2, title: 'Campaña en redes sociales', category: 'Redes Sociales', description: 'Campañas integrales para Facebook e Instagram con contenido visual atractivo y estrategias de engagement.', images: [1, 2, 3] },
+  { id: 3, title: 'E-commerce', category: 'Web Design', description: 'Diseño moderno y funcional para tienda online con experiencia de usuario optimizada.', images: [1, 2, 3] },
+  { id: 4, title: 'Content Series', category: 'Social Media', description: 'Serie de contenido semanal para marca de fitness con alto impacto visual.', images: [1, 2, 3] },
+  { id: 5, title: 'Portfolio Website', category: 'Web Design', description: 'Portfolio creativo para fotógrafo con galería interactiva y diseño inmersivo.', images: [1, 2, 3] },
+  { id: 6, title: 'Product Launch', category: 'Social Media', description: 'Campaña de lanzamiento en redes sociales con estrategia multicanal.', images: [1, 2, 3] },
 ];
 
 function useScrollAnimation() {
@@ -63,7 +64,7 @@ function Counter({ end, title, suffix = '' }: CounterProps) {
       ([entry]) => {
         if (entry.isIntersecting) {
           let startTime: number | undefined;
-          const duration = 2000; // 2 seconds
+          const duration = 2000;
 
           const animateCount = (timestamp: number) => {
             if (!startTime) startTime = timestamp;
@@ -101,6 +102,7 @@ function Counter({ end, title, suffix = '' }: CounterProps) {
 
 export default function LandingPage() {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const servicesAnimation = useScrollAnimation();
@@ -118,10 +120,27 @@ export default function LandingPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Handle form submission success
+  useEffect(() => {
+    if (selectedItem) {
+      setCurrentImageIndex(0);
+    }
+  }, [selectedItem]);
+
   const handleFormSubmit = () => {
     setFormSubmitted(true);
     setTimeout(() => setFormSubmitted(false), 5000);
+  };
+
+  const nextImage = () => {
+    if (selectedItem) {
+      setCurrentImageIndex((prev) => (prev + 1) % selectedItem.images.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedItem) {
+      setCurrentImageIndex((prev) => (prev - 1 + selectedItem.images.length) % selectedItem.images.length);
+    }
   };
 
   return (
@@ -131,13 +150,13 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center text-2xl font-bold text-gray-900">
-              <div className="w-8 h-8 bg-gray-900 rounded-full mr-2"></div>
-              Studio
+              <div className="w-10 h-10 bg-gray-200 border-2 border-dashed rounded-lg mr-3 hover:border-gray-400 transition-all hover:scale-110" />
+              Binec Studio
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">Servicios</a>
-              <a href="#work" className="text-gray-600 hover:text-gray-900 transition-colors">Trabajos</a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Contacto</a>
+              <a href="#services" className="text-gray-600 hover:text-gray-900 transition-all hover:scale-105 transform">Servicios</a>
+              <a href="#work" className="text-gray-600 hover:text-gray-900 transition-all hover:scale-105 transform">Trabajos</a>
+              <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-all hover:scale-105 transform">Contacto</a>
             </div>
           </div>
         </div>
@@ -154,7 +173,7 @@ export default function LandingPage() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
               Creamos experiencias digitales y contenido para redes sociales. También creamos campañas digitales para captación de clientes potenciales.
             </p>
-            <a href="#contact" className="inline-block bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors">
+            <a href="#contact" className="inline-block bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-all hover:scale-105 hover:shadow-lg transform">
               Trabajemos juntos
             </a>
           </div>
@@ -173,9 +192,9 @@ export default function LandingPage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Counter end={35} title="Clients" />
+            <Counter end={35} title="Clientes" />
             <Counter end={100} suffix="k" title="Views" />
-            <Counter end={100} suffix="+" title="Websites and Apps" />
+            <Counter end={100} suffix="+" title="Productos digitales" />
           </div>
         </div>
       </div>
@@ -194,18 +213,32 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Nuestros Servicios</h2>
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="text-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6" />
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Diseño Web</h3>
+            <div className="text-center group">
+              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6 group-hover:border-gray-400 group-hover:scale-110 transition-all" />
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-gray-600 transition-colors">Diseño Web</h3>
               <p className="text-gray-600">
                 Custom websites that blend beautiful design with seamless functionality. From concept to launch, we build digital experiences that convert.
               </p>
             </div>
-            <div className="text-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6" />
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Contenido para Redes Sociales</h3>
+            <div className="text-center group">
+              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6 group-hover:border-gray-400 group-hover:scale-110 transition-all" />
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-gray-600 transition-colors">Aplicaciones Web</h3>
+              <p className="text-gray-600">
+                Custom websites that blend beautiful design with seamless functionality. From concept to launch, we build digital experiences that convert.
+              </p>
+            </div>
+            <div className="text-center group">
+              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6 group-hover:border-gray-400 group-hover:scale-110 transition-all" />
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-gray-600 transition-colors">Marketing Digital</h3>
               <p className="text-gray-600">
                 Campañas digitales personalizadas para captación de clientes potenciales. Creamos, programamos, y manejamos las cuentas para crecer con tu audiencia.
+              </p>
+            </div>
+            <div className="text-center group">
+              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6 group-hover:border-gray-400 group-hover:scale-110 transition-all" />
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-gray-600 transition-colors">Contenido para Redes Sociales</h3>
+              <p className="text-gray-600">
+                Custom websites that blend beautiful design with seamless functionality. From concept to launch, we build digital experiences that convert.
               </p>
             </div>
           </div>
@@ -235,7 +268,7 @@ export default function LandingPage() {
                 onKeyDown={(e) => { if (e.key === 'Enter') setSelectedItem(item); }}
                 aria-label={`View details of ${item.title}`}
               >
-                <div className="bg-gray-200 border-2 border-dashed rounded-xl aspect-square mb-4 group-hover:border-gray-400 transition-colors" />
+                <div className="bg-gray-200 border-2 border-dashed rounded-xl aspect-square mb-4 group-hover:border-gray-400 group-hover:scale-105 transition-all" />
                 <h3 className="text-lg font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
                   {item.title}
                 </h3>
@@ -246,10 +279,10 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Popup Modal for Gallery Item */}
+      {/* Enhanced Popup Modal with Gallery Slider */}
       {selectedItem && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedItem(null)}
           aria-modal="true"
           role="dialog"
@@ -257,23 +290,108 @@ export default function LandingPage() {
           aria-describedby="modal-description"
         >
           <div
-            className="bg-white rounded-lg max-w-lg w-full p-6 relative"
+            className="bg-white rounded-lg max-w-5xl w-full max-h-screen overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl leading-none"
-              aria-label="Close popup"
-            >
-              ×
-            </button>
-            <h3 id="modal-title" className="text-2xl font-semibold mb-2 text-gray-900">
-              {selectedItem.title}
-            </h3>
-            <p className="text-sm text-gray-500 mb-4">{selectedItem.category}</p>
-            <p id="modal-description" className="text-gray-700">
-              {selectedItem.description}
-            </p>
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-start">
+              <div>
+                <h3 id="modal-title" className="text-3xl font-bold text-gray-900 mb-2">
+                  {selectedItem.title}
+                </h3>
+                <p className="text-lg text-gray-500">{selectedItem.category}</p>
+              </div>
+              <button
+                onClick={() => setSelectedItem(null)}
+                className="text-gray-600 hover:text-gray-900 text-3xl leading-none hover:scale-110 transition-transform"
+                aria-label="Close popup"
+              >
+                
+              </button>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8 p-6">
+              {/* Left Column - Image Gallery */}
+              <div className="relative">
+                <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+                  <div className="w-full h-full bg-gray-200 border-2 border-dashed rounded-lg flex items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <span className="text-gray-400 text-xl">Image {currentImageIndex + 1}</span>
+                  </div>
+                </div>
+                
+                {/* Slider Controls */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 hover:bg-opacity-100 transition-all hover:scale-110"
+                  aria-label="Previous image"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 hover:bg-opacity-100 transition-all hover:scale-110"
+                  aria-label="Next image"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                
+                {/* Image Indicators */}
+                <div className="flex justify-center mt-4 space-x-2">
+                  {selectedItem.images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === currentImageIndex ? 'bg-gray-900 w-8' : 'bg-gray-400 hover:bg-gray-600'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              {/* Right Column - Content */}
+              <div className="flex flex-col justify-center">
+                <h4 className="text-xl font-semibold text-gray-900 mb-4">Sobre el proyecto</h4>
+                <p id="modal-description" className="text-gray-700 leading-relaxed">
+                  {selectedItem.description}
+                </p>
+                
+                <div className="mt-8 space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-600">Diseño Creativo</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-600">Alto Rendimiento</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-600">Entrega Rápida</span>
+                  </div>
+                </div>
+                
+                <button className="mt-8 bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-all hover:scale-105 hover:shadow-lg transform">
+                  Ver proyecto completo
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -298,8 +416,8 @@ export default function LandingPage() {
                 <h3 className="text-2xl font-light mb-6">Contact Information</h3>
                 
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
+                  <div className="flex items-center space-x-4 group">
+                    <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-colors">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
@@ -310,8 +428,8 @@ export default function LandingPage() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
+                  <div className="flex items-center space-x-4 group">
+                    <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-colors">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
@@ -332,7 +450,7 @@ export default function LandingPage() {
                     href="https://behance.net"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 hover:scale-110 transition-all"
                     aria-label="Behance"
                   >
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -343,18 +461,18 @@ export default function LandingPage() {
                     href="https://instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 hover:scale-110 transition-all"
                     aria-label="Instagram"
                   >
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.78 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                   </a>
                   <a
                     href="https://soundcloud.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 hover:scale-110 transition-all"
                     aria-label="SoundCloud"
                   >
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -366,7 +484,7 @@ export default function LandingPage() {
                     href="https://linkedin.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 hover:scale-110 transition-all"
                     aria-label="LinkedIn"
                   >
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -378,80 +496,79 @@ export default function LandingPage() {
             </div>
 
             {/* Contact Form with Formspree */}
-            {/* Contact Form with Formspree */}
-<div className="bg-gray-800 rounded-lg p-8">
-  <h3 className="text-2xl font-light mb-6 text-left">Send us a message</h3>
-  {formSubmitted ? (
-    <div className="text-center py-8">
-      <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-        </svg>
-      </div>
-      <h4 className="text-xl font-medium mb-2">Thank You!</h4>
-      <p className="text-gray-300">Your message has been sent successfully. We'll get back to you soon!</p>
-    </div>
-  ) : (
-    <form 
-      action="https://formspree.io/f/meornwrg" 
-      method="POST"
-      className="space-y-6"
-    >
-      <div>
-        <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">
-          Name
-        </label>
-        <input
-          type="text"
-          id="contact-name"
-          name="name"
-          className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
-          placeholder="Your name"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">
-          Email
-        </label>
-        <input
-          type="email"
-          id="contact-email"
-          name="email"
-          className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
-          placeholder="your.email@example.com"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">
-          Message
-        </label>
-        <textarea
-          id="contact-message"
-          name="message"
-          rows={4}
-          className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white"
-          placeholder="Tell us about your project..."
-          required
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full bg-white text-gray-900 py-3 rounded-full hover:bg-gray-200 transition-colors font-medium"
-      >
-        Send Message
-      </button>
-    </form>
-  )}
-</div>
+            <div className="bg-gray-800 rounded-lg p-8">
+              <h3 className="text-2xl font-light mb-6 text-left">Send us a message</h3>
+              {formSubmitted ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="text-xl font-medium mb-2">Thank You!</h4>
+                  <p className="text-gray-300">Your message has been sent successfully. We'll get back to you soon!</p>
+                </div>
+              ) : (
+                <form 
+                  action="https://formspree.io/f/meornwrg" 
+                  method="POST"
+                  className="space-y-6"
+                >
+                  <div>
+                    <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all"
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">
+                      Message
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows={4}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all"
+                      placeholder="Tell us about your project..."
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-white text-gray-900 py-3 rounded-full hover:bg-gray-200 transition-all hover:scale-105 hover:shadow-lg transform font-medium"
+                  >
+                    ENVIAR MENSAJE
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 text-sm bg-gray-900 border-t border-gray-800">
-        &copy; {new Date().getFullYear()} Studio. All rights reserved.
+        &copy; {new Date().getFullYear()} Binec Studio. Todos los derechos son reservados.
       </footer>
 
       {/* WhatsApp Floating Button */}
@@ -459,7 +576,7 @@ export default function LandingPage() {
         href="https://wa.me/5533313935"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all hover:scale-110 z-50"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all hover:scale-110 hover:rotate-12 z-50"
         aria-label="Contact us on WhatsApp"
       >
         <svg
