@@ -11,7 +11,7 @@ interface GalleryItem {
 
 const galleryItems: GalleryItem[] = [
   { id: 1, title: 'Identidad de Marca', category: 'Diseño Web', description: 'Diseño completo de identidad de marca y sitio web corporativo con enfoque moderno y minimalista.', images: [1, 2, 3] },
-  { id: 2, title: 'Campaña en redes sociales', category: 'Redes Sociales', description: 'Campañas integrales para Facebook e Instagram con contenido visual atractivo y estrategias de engagement.', images: [1, 2, 3] },
+  { id: 2, title: 'Campaña Social', category: 'Redes Sociales', description: 'Campañas integrales para Facebook e Instagram con contenido visual atractivo y estrategias de engagement.', images: [1, 2, 3] },
   { id: 3, title: 'E-commerce', category: 'Web Design', description: 'Diseño moderno y funcional para tienda online con experiencia de usuario optimizada.', images: [1, 2, 3] },
   { id: 4, title: 'Content Series', category: 'Social Media', description: 'Serie de contenido semanal para marca de fitness con alto impacto visual.', images: [1, 2, 3] },
   { id: 5, title: 'Portfolio Website', category: 'Web Design', description: 'Portfolio creativo para fotógrafo con galería interactiva y diseño inmersivo.', images: [1, 2, 3] },
@@ -193,7 +193,9 @@ export default function MainContainer() {
             onClick={() => navigateTo()}
             className="flex items-center text-2xl font-bold text-gray-900 focus:outline-none group"
           >
-            <div className="w-10 h-10 bg-gray-200 border-2 border-dashed rounded-lg mr-3 group-hover:border-gray-400 transition-all group-hover:scale-110" />
+            <div className="w-10 h-10 bg-gray-900 rounded-lg mr-3 flex items-center justify-center text-white transform group-hover:rotate-12 transition-all">
+              BS
+            </div>
             Binec Studio
           </button>
           <div className="hidden md:flex space-x-8">
@@ -410,39 +412,60 @@ export default function MainContainer() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Nuestros Servicios</h2>
           <div className="grid md:grid-cols-2 gap-12">
+            {/* Web Design */}
             <div className="text-center group">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6 group-hover:border-gray-400 group-hover:scale-110 transition-all" />
-              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-gray-600 transition-colors">Diseño Web</h3>
+              <div className="w-20 h-20 mx-auto mb-6 bg-blue-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-blue-200 transition-all duration-300">
+                <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">Diseño Web</h3>
               <p className="text-gray-600">
-                Custom websites that blend beautiful design with seamless functionality. From concept to launch, we build digital experiences that convert.
+                Sitios web personalizados que combinan un diseño hermoso con una funcionalidad perfecta. Desde el concepto hasta el lanzamiento, creamos experiencias digitales que convierten.
               </p>
             </div>
+            {/* Web Apps */}
             <div className="text-center group">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6 group-hover:border-gray-400 group-hover:scale-110 transition-all" />
-              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-gray-600 transition-colors">Aplicaciones Web</h3>
+              <div className="w-20 h-20 mx-auto mb-6 bg-purple-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-purple-200 transition-all duration-300">
+                <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">Aplicaciones Web</h3>
               <p className="text-gray-600">
-                Custom websites that blend beautiful design with seamless functionality. From concept to launch, we build digital experiences that convert.
+                Desarrollo de aplicaciones web robustas y escalables. Creamos herramientas digitales a medida para optimizar los procesos de tu negocio.
               </p>
             </div>
+            {/* Digital Marketing */}
             <div className="text-center group">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6 group-hover:border-gray-400 group-hover:scale-110 transition-all" />
-              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-gray-600 transition-colors">Marketing Digital</h3>
+              <div className="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-green-200 transition-all duration-300">
+                <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-green-600 transition-colors">Marketing Digital</h3>
               <p className="text-gray-600">
                 Campañas digitales personalizadas para captación de clientes potenciales. Creamos, programamos, y manejamos las cuentas para crecer con tu audiencia.
               </p>
             </div>
+            {/* Social Media Content */}
             <div className="text-center group">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 mx-auto mb-6 group-hover:border-gray-400 group-hover:scale-110 transition-all" />
-              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-gray-600 transition-colors">Contenido para Redes Sociales</h3>
+              <div className="w-20 h-20 mx-auto mb-6 bg-pink-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-pink-200 transition-all duration-300">
+                <svg className="w-10 h-10 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-pink-600 transition-colors">Contenido para Redes</h3>
               <p className="text-gray-600">
-                Custom websites that blend beautiful design with seamless functionality. From concept to launch, we build digital experiences that convert.
+                Creación de contenido visual atractivo y estratégico para tus redes sociales. Fotos, videos y diseños que conectan con tu audiencia y fortalecen tu marca.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Gallery Section */}
+      {/* Gallery Section Work - Updated for 2 columns on mobile */}
       <div 
         id="work" 
         ref={workAnimation.ref}
@@ -455,7 +478,8 @@ export default function MainContainer() {
       >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Our Work</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* CHANGED: grid-cols-2 is now base, added smaller gap for mobile */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {galleryItems.map((item) => (
               <div
                 key={item.id}
@@ -466,10 +490,10 @@ export default function MainContainer() {
                 aria-label={`View details of ${item.title}`}
               >
                 <div className="bg-gray-200 border-2 border-dashed rounded-xl aspect-square mb-4 group-hover:border-gray-400 group-hover:scale-105 transition-all" />
-                <h3 className="text-lg font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                <h3 className="text-base md:text-lg font-medium text-gray-900 group-hover:text-gray-600 transition-colors line-clamp-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-500">{item.category}</p>
+                <p className="text-xs md:text-sm text-gray-500">{item.category}</p>
               </div>
             ))}
           </div>
@@ -647,21 +671,34 @@ export default function MainContainer() {
                 </div>
               </div>
 
-              {/* Social Media */}
+              {/* Social Media - Updated with correct brand icons */}
               <div className="text-left">
                 <h3 className="text-2xl font-light mb-6">Follow Us</h3>
                 <div className="flex space-x-4">
-                  {/* Social Icons (reused) */}
-                  {['Behance', 'Instagram', 'SoundCloud', 'LinkedIn'].map((network) => (
-                     <a
-                      key={network}
-                      href="#"
-                      className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 hover:scale-110 transition-all"
-                      aria-label={network}
-                    >
-                      <div className="w-6 h-6 bg-gray-400 rounded-sm" />
-                    </a>
-                  ))}
+                  {/* Behance */}
+                  <a href="#" className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 hover:scale-110 transition-all" aria-label="Behance">
+                     <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 1.425-2.842 1.425-1.83 0-2.403-.829-2.687-1.784-.591-1.993-1.777-2.537-3.547-2.537h-4.65v4.9h-3.502v-14h7.677c3.298 0 4.508 1.748 4.508 4.258 0 1.448-.558 2.741-1.816 3.467 1.807.767 2.204 2.308 1.861 4.271zm-14.476-6h3.203c1.668 0 2.133-.493 2.133-1.864 0-1.268-.482-1.788-1.668-1.788h-3.668v3.652zm0 6h4.202c1.297 0 2.095-.354 2.095-1.858 0-1.297-.675-1.945-2.331-1.945h-3.966v3.803z"/>
+                     </svg>
+                  </a>
+                  {/* Instagram */}
+                  <a href="#" className="w-12 h-12 bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 rounded-full flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all" aria-label="Instagram">
+                     <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                     </svg>
+                  </a>
+                  {/* SoundCloud */}
+                  <a href="#" className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-500 hover:scale-110 transition-all" aria-label="SoundCloud">
+                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M11.56 8.87V17h-1.14v-8.13c0-.19-.15-.34-.34-.34s-.34.15-.34.34v8.13h-1.14V9.4c0-.19-.15-.34-.34-.34s-.34.15-.34.34v7.6h-1.14V11.57c0-.19-.15-.34-.34-.34s-.34.15-.34.34v5.43H5.3V13.46c0-.19-.15-.34-.34-.34s-.34.15-.34.34v3.54h-1.14v-2.36c0-.19-.15-.34-.34-.34s-.34.15-.34.34v2.36h-1.14v-1.4c0-.19-.15-.34-.34-.34s-.34.15-.34.34v1.4H0v.36c0 3.32 2.67 6 5.92 6H12v-9c0 3.84 3.16 7 7 7s7-3.16 7-7-3.16-7-7-7c-2.76 0-5.14 1.67-6.29 4.05-.05 0-.1-.02-.15-.02z"/>
+                    </svg>
+                  </a>
+                  {/* LinkedIn */}
+                  <a href="#" className="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 hover:scale-110 transition-all" aria-label="LinkedIn">
+                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
