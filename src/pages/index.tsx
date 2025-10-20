@@ -250,9 +250,8 @@ export default function MainContainer() {
             {/* Logo Image Placeholder - No hover animation */}
             <div className="w-10 h-10 bg-gray-900 rounded-lg mr-3 flex items-center justify-center overflow-hidden">
               {/* Replace this svg with <img src=\"/your-logo.png\" alt=\"Logo\" /> */}
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
+              <img src="assets/binec-logo.png" alt="" />
+              
             </div>
             Binec Studio
           </button>
@@ -421,11 +420,11 @@ export default function MainContainer() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-6">
-              Diseño Web
-              <span className="block text-gray-500">Redes sociales</span>
+              Diseño y Aplicaciones Web
+              <span className="block text-gray-500">Redes Sociales</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-              Creamos experiencias digitales y contenido para redes sociales. También creamos campañas digitales para captación de clientes potenciales.
+              Creamos experiencias digitales y contenido para redes sociales. Campañas digitales para captación de clientes potenciales.
             </p>
             <button 
               onClick={() => navigateTo('contact')}
@@ -450,7 +449,7 @@ export default function MainContainer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <Counter end={35} title="Clientes" />
-            <Counter end={100} suffix="k" title="Views" />
+            <Counter end={175}suffix="k" title="Proyectos"></Counter>
             <div className="col-span-2 md:col-span-1">
                <Counter end={100} suffix="+" title="Productos digitales" />
             </div>
@@ -481,12 +480,12 @@ export default function MainContainer() {
               </div>
               <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">Diseño Web</h3>
               <p className="text-gray-600">
-                Sitios web personalizados que combinan un diseño hermoso con una funcionalidad perfecta. Desde el concepto hasta el lanzamiento, creamos experiencias digitales que convierten.
+                Sitios web personalizados que combinan un diseñ  funcionalidad perfecta. Desde el concepto hasta el lanzamiento, creamos experiencias digitales que convierten.
               </p>
             </div>
             {/* Web Apps */}
             <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-6 bg-purple-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-purple-200 transition-all duration-300">
+              <div className="w-20 h-20 mx-auto mb-6 bg-purpl e-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-purple-200 transition-all duration-300">
                 <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
