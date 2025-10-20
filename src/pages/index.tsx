@@ -189,12 +189,16 @@ export default function MainContainer() {
     <nav className="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-sm z-40 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <button 
+          <button
             onClick={() => navigateTo()}
-            className="flex items-center text-2xl font-bold text-gray-900 focus:outline-none group"
+            className="flex items-center text-2xl font-bold text-gray-900 focus:outline-none"
           >
-            <div className="w-10 h-10 bg-gray-900 rounded-lg mr-3 flex items-center justify-center text-white transform group-hover:rotate-12 transition-all">
-              BS
+            {/* Logo Image Placeholder - No hover animation */}
+            <div className="w-10 h-10 bg-gray-900 rounded-lg mr-3 flex items-center justify-center overflow-hidden">
+              {/* Replace this svg with <img src=\"/your-logo.png\" alt=\"Logo\" /> */}
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
             </div>
             Binec Studio
           </button>
@@ -379,7 +383,7 @@ export default function MainContainer() {
         </div>
       </section>
 
-      {/* Stats Banner */}
+      {/* Stats Banner - UPDATED: grid-cols-2 for mobile with colspan on last item */}
       <div 
         ref={statsAnimation.ref}
         style={{
@@ -390,10 +394,12 @@ export default function MainContainer() {
         className="py-16 bg-gray-900 text-white"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <Counter end={35} title="Clientes" />
             <Counter end={100} suffix="k" title="Views" />
-            <Counter end={100} suffix="+" title="Productos digitales" />
+            <div className="col-span-2 md:col-span-1">
+               <Counter end={100} suffix="+" title="Productos digitales" />
+            </div>
           </div>
         </div>
       </div>
@@ -465,7 +471,7 @@ export default function MainContainer() {
         </div>
       </div>
 
-      {/* Gallery Section Work - Updated for 2 columns on mobile */}
+      {/* Gallery Section Work */}
       <div 
         id="work" 
         ref={workAnimation.ref}
@@ -478,7 +484,6 @@ export default function MainContainer() {
       >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Our Work</h2>
-          {/* CHANGED: grid-cols-2 is now base, added smaller gap for mobile */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {galleryItems.map((item) => (
               <div
@@ -567,7 +572,7 @@ export default function MainContainer() {
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`h-2 rounded-full transition-all duration-300 ${ 
+                      className={`h-2 rounded-full transition-all duration-300 ${
                         index === currentImageIndex ? 'bg-gray-900 w-6' : 'bg-gray-300 w-2 hover:bg-gray-400'
                       }`}
                       aria-label={`Go to image ${index + 1}`}
@@ -671,7 +676,7 @@ export default function MainContainer() {
                 </div>
               </div>
 
-              {/* Social Media - Updated with correct brand icons */}
+              {/* Social Media */}
               <div className="text-left">
                 <h3 className="text-2xl font-light mb-6">Follow Us</h3>
                 <div className="flex space-x-4">
