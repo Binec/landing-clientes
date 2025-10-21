@@ -576,7 +576,7 @@ export default function MainContainer() {
             onClick={() => navigateTo()}
             className="flex items-center text-2xl font-bold text-gray-900 focus:outline-none"
           >
-            <div className="w-100 h-10 bg-gray-900 rounded-lg mr-3 flex items-center justify-center overflow-hidden">
+            <div className="w-100 h-10 mr-3 flex items-center justify-center overflow-hidden">
               <img src="assets/binec-logo.png" alt="Binec Studio Logo" />
             </div>
             Binec Studio
