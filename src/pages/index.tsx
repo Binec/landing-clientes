@@ -6,7 +6,15 @@ interface GalleryItem {
   title: string;
   category: string;
   description: string;
-  images: number[];
+  fullDescription: string;
+  challenge: string;
+  solution: string;
+  services: string[];
+  client: string;
+  duration: string;
+  year: string;
+  images: string[];
+  coverImage: string;
 }
 
 interface FormData {
@@ -17,12 +25,120 @@ interface FormData {
 }
 
 const galleryItems: GalleryItem[] = [
-  { id: 1, title: 'Identidad de Marca', category: 'Diseño Web', description: 'Diseño completo de identidad de marca y sitio web corporativo con enfoque moderno y minimalista.', images: [1, 2, 3] },
-  { id: 2, title: 'Campaña Social', category: 'Redes Sociales', description: 'Campañas integrales para Facebook e Instagram con contenido visual atractivo y estrategias de engagement.', images: [1, 2, 3] },
-  { id: 3, title: 'E-commerce', category: 'Web Design', description: 'Diseño moderno y funcional para tienda online con experiencia de usuario optimizada.', images: [1, 2, 3] },
-  { id: 4, title: 'Content Series', category: 'Social Media', description: 'Serie de contenido semanal para marca de fitness con alto impacto visual.', images: [1, 2, 3] },
-  { id: 5, title: 'Portfolio Website', category: 'Web Design', description: 'Portfolio creativo para fotógrafo con galería interactiva y diseño inmersivo.', images: [1, 2, 3] },
-  { id: 6, title: 'Product Launch', category: 'Social Media', description: 'Campaña de lanzamiento en redes sociales con estrategia multicanal.', images: [1, 2, 3] },
+  { 
+    id: 1, 
+    title: 'Hako - Identidad de Marca', 
+    category: 'Creación de Marca, Diseño Web', 
+    description: 'Diseño completo de identidad de marca y sitio web corporativo con enfoque moderno y minimalista.', 
+    fullDescription: 'Hako es una marca emergente en el sector de productos sostenibles que buscaba establecer una identidad sólida en el mercado. Desarrollamos una identidad visual completa que refleja sus valores de sostenibilidad y diseño consciente, junto con un sitio web corporativo que comunica efectivamente su propuesta de valor.',
+    challenge: 'La marca necesitaba diferenciarse en un mercado saturado de productos similares, comunicando autenticidad y compromiso ambiental sin caer en clichés del sector ecológico.',
+    solution: 'Creamos un sistema de identidad basado en formas orgánicas y una paleta de colores terrosos, combinado con tipografía moderna. El sitio web incorpora micro-interacciones que guían al usuario a través del proceso de descubrimiento de la marca.',
+    services: ['Brand Strategy', 'Logo Design', 'Visual Identity', 'Web Design', 'Content Creation'],
+    client: 'Hako Sustainable Goods',
+    duration: '6 semanas',
+    year: '2023',
+    coverImage: '/assets/projects/project-1/cover.jpg',
+    images: [
+      '/assets/projects/project-1/image1.jpg',
+      '/assets/projects/project-1/image2.jpg',
+      '/assets/projects/project-1/image3.jpg'
+    ]
+  },
+  { 
+    id: 2, 
+    title: 'AI27 - Product Launch', 
+    category: 'Web App, Native App, Diseño Web, Diseño UX', 
+    description: 'Diseño de experiencia de usuario, aplicaciones web, nativas y sitio web. Implementación de AI para predicción de riesgos en logística.', 
+    fullDescription: 'AI27 es una plataforma de inteligencia artificial especializada en la predicción de riesgos logísticos para empresas de transporte y cadena de suministro. Desarrollamos un ecosistema digital completo que incluye dashboard web, aplicación móvil y sitio corporativo.',
+    challenge: 'Crear interfaces intuitivas para visualizar datos complejos de predicción de riesgos, haciendo accesible la inteligencia artificial a usuarios no técnicos en el sector logístico.',
+    solution: 'Diseñamos un sistema de visualización de datos con gráficos interactivos y alertas contextuales. Implementamos un diseño responsivo que funciona igualmente bien en desktop y dispositivos móviles para profesionales en movimiento.',
+    services: ['UI/UX Design', 'Web Application', 'Native App', 'AI Integration', 'Dashboard Design'],
+    client: 'AI27 Technologies',
+    duration: '12 semanas',
+    year: '2023',
+    coverImage: '/assets/projects/project-2/cover.jpg',
+    images: [
+      '/assets/projects/project-2/image1.jpg',
+      '/assets/projects/project-2/image2.jpg',
+      '/assets/projects/project-2/image3.jpg'
+    ]
+  },
+  { 
+    id: 3, 
+    title: 'Grupo Kalte - E-commerce', 
+    category: 'Diseño Web, Creación de Contenido', 
+    description: 'Diseño moderno y funcional para tienda online con experiencia de usuario optimizada.', 
+    fullDescription: 'Grupo Kalte, distribuidor de equipos de refrigeración industrial, necesitaba modernizar su presencia digital y establecer un canal de ventas online eficiente. Desarrollamos una plataforma e-commerce robusta con catálogo complejo y sistema de cotizaciones integrado.',
+    challenge: 'Manejar un catálogo con más de 500 productos técnicos con múltiples variantes y especificaciones, manteniendo una experiencia de compra simple y accesible.',
+    solution: 'Implementamos filtros avanzados y comparadores de productos, junto con un sistema de cotizaciones online que permite a los clientes solicitar precios personalizados para equipos industriales.',
+    services: ['E-commerce Development', 'UX Design', 'Content Strategy', 'Product Photography', 'SEO Optimization'],
+    client: 'Grupo Kalte',
+    duration: '10 semanas',
+    year: '2023',
+    coverImage: '/assets/projects/project-3/cover.jpg',
+    images: [
+      '/assets/projects/project-3/image1.jpg',
+      '/assets/projects/project-3/image2.jpg',
+      '/assets/projects/project-3/image3.jpg'
+    ]
+  },
+  { 
+    id: 4, 
+    title: 'Le Pain Quotidien - Campaña Digital', 
+    category: 'Redes Sociales, Creación de Contenido', 
+    description: 'Serie de contenido semanal para marca de fitness con alto impacto visual.', 
+    fullDescription: 'Campaña integral de redes sociales para Le Pain Quotidien, enfocada en posicionar su nueva línea de productos saludables y promover sus espacios como lugares de trabajo remoto. Desarrollamos contenido estratégico para Instagram, Facebook y TikTok.',
+    challenge: 'Atraer a una audiencia más joven sin alienar a su base de clientes tradicional, mostrando la evolución de la marca manteniendo su esencia artesanal.',
+    solution: 'Creamos series de contenido específicas para cada plataforma: tutorials en Instagram Reels, behind-the-scenes en Stories, y contenido inspiracional en Facebook. Implementamos una estrategia de UGC (User Generated Content) que incrementó el engagement en un 240%.',
+    services: ['Social Media Strategy', 'Content Creation', 'Community Management', 'Video Production', 'Performance Analytics'],
+    client: 'Le Pain Quotidien',
+    duration: '16 semanas',
+    year: '2023',
+    coverImage: '/assets/projects/project-4/cover.jpg',
+    images: [
+      '/assets/projects/project-4/image1.jpg',
+      '/assets/projects/project-4/image2.jpg',
+      '/assets/projects/project-4/image3.jpg'
+    ]
+  },
+  { 
+    id: 5, 
+    title: 'Tomodachi - Portfolio Website', 
+    category: 'Diseño Web, Creación de Contenido, Diseño Gráfico', 
+    description: 'Portfolio creativo para fotógrafo con galería interactiva y diseño inmersivo.', 
+    fullDescription: 'Portfolio digital para Tomodachi, fotógrafo especializado en retratos urbanos y documentales. Desarrollamos una experiencia web inmersiva que funciona como galería virtual y punto de contacto para clientes potenciales.',
+    challenge: 'Mostrar una amplia variedad de trabajos fotográficos manteniendo la coherencia visual y permitiendo que cada imagen tenga el impacto adecuado, sin sobrecargar al usuario.',
+    solution: 'Diseñamos una interfaz minimalista con navegación intuitiva y sistema de filtros por categorías. Implementamos lazy loading para optimizar el rendimiento y un sistema de lightbox que permite apreciar los detalles de cada fotografía.',
+    services: ['Portfolio Design', 'Visual Identity', 'Web Development', 'Photo Curation', 'Copywriting'],
+    client: 'Tomodachi Photography',
+    duration: '4 semanas',
+    year: '2023',
+    coverImage: '/assets/projects/project-5/cover.jpg',
+    images: [
+      '/assets/projects/project-5/image1.jpg',
+      '/assets/projects/project-5/image2.jpg',
+      '/assets/projects/project-5/image3.jpg'
+    ]
+  },
+  { 
+    id: 6, 
+    title: 'Binec - Diseño Web 3D, RV y RA', 
+    category: 'Modelado 3D, Realidad Virtual y Aumentada', 
+    description: 'Campaña de lanzamiento en redes sociales con estrategia multicanal.', 
+    fullDescription: 'Desarrollo de experiencias inmersivas para Binec Studio, incorporando elementos 3D interactivos y prototipos de realidad aumentada para mostrar el potencial de estas tecnologías en proyectos comerciales.',
+    challenge: 'Demostrar las capacidades técnicas del estudio en entornos 3D y realidad extendida a través de medios tradicionales (web), creando experiencias accesibles que no requieren hardware especializado.',
+    solution: 'Implementamos WebGL para visualizar modelos 3D directamente en el navegador, junto con experiencias de AR que utilizan la cámara del dispositivo móvil. Creamos casos de estudio interactivos que muestran el proceso creativo detrás de cada proyecto.',
+    services: ['3D Modeling', 'WebGL Development', 'AR Experiences', 'Interactive Design', 'Technical Consulting'],
+    client: 'Binec Studio',
+    duration: '8 semanas',
+    year: '2023',
+    coverImage: '/assets/projects/project-6/cover.jpg',
+    images: [
+      '/assets/projects/project-6/image1.jpg',
+      '/assets/projects/project-6/image2.jpg',
+      '/assets/projects/project-6/image3.jpg'
+    ]
+  },
 ];
 
 // --- Hooks ---
@@ -102,13 +218,215 @@ function Counter({ end, title, suffix = '' }: CounterProps) {
   );
 }
 
+// --- Project Detail Component ---
+interface ProjectDetailProps {
+  project: GalleryItem;
+  onBack: () => void;
+  onNavigateToContact: () => void;
+}
+
+function ProjectDetail({ project, onBack, onNavigateToContact }: ProjectDetailProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length);
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Project Hero */}
+      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <button 
+            onClick={onBack}
+            className="inline-flex items-center text-gray-500 hover:text-gray-900 mb-8 transition-colors"
+          >
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Volver a trabajos
+          </button>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+            {project.title}
+          </h1>
+          <div className="flex flex-wrap items-center gap-4 text-gray-600">
+            <span className="bg-gray-200 px-3 py-1 rounded-full text-sm font-medium">{project.category}</span>
+            <span>•</span>
+            <span>{project.year}</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Full Width Image banner */}
+      <div className="w-full aspect-[21/9] bg-gray-100 overflow-hidden relative">
+        <img 
+          src={project.coverImage} 
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid md:grid-cols-3 gap-12">
+          {/* Main Content */}
+          <div className="md:col-span-2 space-y-12">
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Resumen del Proyecto</h2>
+              <p className="text-xl text-gray-600 leading-relaxed font-light">
+                {project.fullDescription}
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">El Desafío</h3>
+              <p className="text-gray-600 leading-relaxed">
+                {project.challenge}
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">La Solución</h3>
+              <p className="text-gray-600 leading-relaxed mb-8">
+                {project.solution}
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                  <img 
+                    src={project.images[0]} 
+                    alt={`${project.title} - Solution 1`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                  <img 
+                    src={project.images[1] || project.images[0]} 
+                    alt={`${project.title} - Solution 2`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </section>
+
+            {/* Image Gallery */}
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Galería del Proyecto</h3>
+              <div className="relative">
+                <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
+                  <img 
+                    src={project.images[currentImageIndex]} 
+                    alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Slider Controls */}
+                {project.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 hover:bg-opacity-100 transition-all hover:scale-110 shadow-sm"
+                      aria-label="Previous image"
+                    >
+                      <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 hover:bg-opacity-100 transition-all hover:scale-110 shadow-sm"
+                      aria-label="Next image"
+                    >
+                      <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                    
+                    {/* Image Indicators */}
+                    <div className="flex justify-center mt-4 space-x-2">
+                      {project.images.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentImageIndex(index)}
+                          className={`h-2 rounded-full transition-all duration-300 ${ 
+                            index === currentImageIndex ? 'bg-gray-900 w-6' : 'bg-gray-300 w-2 hover:bg-gray-400'
+                          }`}
+                          aria-label={`Go to image ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            </section>
+          </div>
+
+          {/* Sidebar Details */}
+          <div className="space-y-8">
+            <div className="bg-gray-50 p-6 rounded-2xl">
+              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Servicios</h3>
+              <ul className="space-y-2 text-gray-600">
+                {project.services.map((service, index) => (
+                  <li key={index}>{service}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-2xl">
+              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Cliente</h3>
+              <p className="text-gray-600">{project.client}</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-2xl">
+              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Duración</h3>
+              <p className="text-gray-600">{project.duration}</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-2xl">
+              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Año</h3>
+              <p className="text-gray-600">{project.year}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Additional Gallery */}
+        <section className="mt-24">
+          <h2 className="text-3xl font-light text-center mb-12">Detalles Adicionales</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {project.images.map((image, index) => (
+              <div key={index} className="aspect-square bg-gray-100 rounded-xl overflow-hidden">
+                <img 
+                  src={image} 
+                  alt={`${project.title} - Additional view ${index + 1}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Next Project CTA */}
+        <div className="mt-32 text-center border-t border-gray-100 pt-20">
+          <h3 className="text-2xl font-light text-gray-600 mb-6">¿Te gustó este proyecto?</h3>
+          <button 
+            onClick={onNavigateToContact}
+            className="inline-block bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all hover:scale-105 hover:shadow-lg transform text-lg"
+          >
+            Hablemos sobre tu proyecto
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // --- Main Component ---
 type ViewState = 'landing' | 'project';
 
 export default function MainContainer() {
   // Routing & Navigation State
   const [currentView, setCurrentView] = useState<ViewState>('landing');
-  const [fullProject, setFullProject] = useState<GalleryItem | null>(null);
+  const [currentProject, setCurrentProject] = useState<GalleryItem | null>(null);
   const [pendingScroll, setPendingScroll] = useState<string | null>(null);
 
   // Landing Page State
@@ -161,10 +479,18 @@ export default function MainContainer() {
 
   // --- Handlers ---
   const handleViewFullProject = (item: GalleryItem) => {
-    setFullProject(item);
+    setCurrentProject(item);
     setCurrentView('project');
     setSelectedItem(null);
     window.scrollTo(0, 0);
+  };
+
+  const handleBackToProjects = () => {
+    setCurrentView('landing');
+    // Small delay to ensure the landing page is rendered before scrolling
+    setTimeout(() => {
+      document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
 
   const navigateTo = (sectionId?: string) => {
@@ -250,11 +576,8 @@ export default function MainContainer() {
             onClick={() => navigateTo()}
             className="flex items-center text-2xl font-bold text-gray-900 focus:outline-none"
           >
-            {/* Logo Image Placeholder - No hover animation */}
             <div className="w-10 h-10 bg-gray-900 rounded-lg mr-3 flex items-center justify-center overflow-hidden">
-              {/* Replace this svg with <img src=\"/your-logo.png\" alt=\"Logo\" /> */}
-              <img src="assets/binec-logo.png" alt="" />
-              
+              <img src="assets/binec-logo.png" alt="Binec Studio Logo" />
             </div>
             Binec Studio
           </button>
@@ -289,124 +612,15 @@ export default function MainContainer() {
   );
 
   // --- Views ---
-  if (currentView === 'project' && fullProject) {
+  if (currentView === 'project' && currentProject) {
     return (
       <div className="min-h-screen bg-white">
         <Navigation />
-        
-        <main className="pt-16">
-          {/* Project Hero */}
-          <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-            <div className="max-w-7xl mx-auto">
-              <button 
-                onClick={() => navigateTo('work')}
-                className="inline-flex items-center text-gray-500 hover:text-gray-900 mb-8 transition-colors"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Volver a trabajos
-              </button>
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-                {fullProject.title}
-              </h1>
-              <div className="flex items-center space-x-4 text-gray-600">
-                <span className="bg-gray-200 px-3 py-1 rounded-full text-sm font-medium">{fullProject.category}</span>
-                <span>•</span>
-                <span>2023</span>
-              </div>
-            </div>
-          </section>
-
-          {/* Full Width Image banner */}
-          <div className="w-full aspect-[21/9] bg-gray-100 overflow-hidden">
-             <div className="w-full h-full bg-gray-200 border-y-2 border-dashed border-gray-300 flex items-center justify-center">
-                <span className="text-gray-400 text-2xl font-light">Project Cover Image</span>
-             </div>
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div className="grid md:grid-cols-3 gap-12">
-              {/* Main Content */}
-              <div className="md:col-span-2 space-y-12">
-                <section>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Resumen del Proyecto</h2>
-                  <p className="text-xl text-gray-600 leading-relaxed font-light">
-                    {fullProject.description}
-                  </p>
-                  <p className="mt-6 text-gray-600 leading-relaxed">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
-                </section>
-
-                <section>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">El Desafío</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </p>
-                </section>
-
-                <section>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">La Solución</h3>
-                  <p className="text-gray-600 leading-relaxed mb-8">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4">
-                     <div className="aspect-video bg-gray-200 border-2 border-dashed rounded-lg" />
-                     <div className="aspect-video bg-gray-200 border-2 border-dashed rounded-lg" />
-                  </div>
-                </section>
-              </div>
-
-              {/* Sidebar Details */}
-              <div className="space-y-8">
-                <div className="bg-gray-50 p-6 rounded-2xl">
-                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Servicios</h3>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>UI/UX Design</li>
-                    <li>Frontend Development</li>
-                    <li>Backend Integration</li>
-                    <li>Brand Strategy</li>
-                  </ul>
-                </div>
-                <div className="bg-gray-50 p-6 rounded-2xl">
-                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Cliente</h3>
-                  <p className="text-gray-600">Empresa Confidencial S.A.</p>
-                </div>
-                <div className="bg-gray-50 p-6 rounded-2xl">
-                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Duración</h3>
-                  <p className="text-gray-600">8 Semanas</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Additional Gallery */}
-            <section className="mt-24">
-              <h2 className="text-3xl font-light text-center mb-12">Galería del Proyecto</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {[1, 2, 3, 4].map((img) => (
-                  <div key={img} className="aspect-square bg-gray-100 rounded-xl overflow-hidden">
-                    <div className="w-full h-full bg-gray-200 border-2 border-dashed flex items-center justify-center hover:scale-105 transition-transform duration-500">
-                      <span className="text-gray-400">Detailed View {img}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Next Project CTA */}
-            <div className="mt-32 text-center border-t border-gray-100 pt-20">
-              <h3 className="text-2xl font-light text-gray-600 mb-6">¿Listo para comenzar tu proyecto?</h3>
-              <button 
-                onClick={() => navigateTo('contact')}
-                className="inline-block bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all hover:scale-105 hover:shadow-lg transform text-lg"
-              >
-                Contáctanos hoy mismo
-              </button>
-            </div>
-          </div>
-        </main>
-
+        <ProjectDetail 
+          project={currentProject} 
+          onBack={handleBackToProjects}
+          onNavigateToContact={() => navigateTo('contact')}
+        />
         <Footer />
         <WhatsAppButton />
       </div>
@@ -438,7 +652,7 @@ export default function MainContainer() {
         </div>
       </section>
 
-      {/* Stats Banner - UPDATED: grid-cols-2 for mobile with colspan on last item */}
+      {/* Stats Banner */}
       <div 
         ref={statsAnimation.ref}
         style={{
@@ -559,7 +773,13 @@ export default function MainContainer() {
                 onKeyDown={(e) => { if (e.key === 'Enter') setSelectedItem(item); }}
                 aria-label={`View details of ${item.title}`}
               >
-                <div className="bg-gray-200 border-2 border-dashed rounded-xl aspect-square mb-4 group-hover:border-gray-400 group-hover:scale-105 transition-all" />
+                <div className="bg-gray-200 rounded-xl aspect-square mb-4 overflow-hidden group-hover:scale-105 transition-all">
+                  <img 
+                    src={item.coverImage} 
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <h3 className="text-base md:text-lg font-medium text-gray-900 group-hover:text-gray-600 transition-colors line-clamp-1">
                   {item.title}
                 </h3>
@@ -606,9 +826,11 @@ export default function MainContainer() {
               {/* Left Column - Image Gallery */}
               <div className="relative">
                 <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
-                  <div className="w-full h-full bg-gray-200 border-2 border-dashed rounded-lg flex items-center justify-center transition-transform duration-300 hover:scale-105">
-                    <span className="text-gray-400 text-xl">Image {currentImageIndex + 1}</span>
-                  </div>
+                  <img 
+                    src={selectedItem.images[currentImageIndex]} 
+                    alt={`${selectedItem.title} - Image ${currentImageIndex + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
                 </div>
                 
                 {/* Slider Controls */}
