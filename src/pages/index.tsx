@@ -593,7 +593,7 @@ export default function MainContainer() {
 
   const Footer = () => (
     <footer className="py-8 text-center text-gray-500 text-sm bg-gray-900 border-t border-gray-800">
-      <div className="w-100 h-10 mr-3 flex items-center justify-center overflow-hidden">
+      <div className="w-100 h-10 mr-3 mb-30 flex items-center justify-center overflow-hidden">
               <img src="assets/binec-logo.png" alt="Binec Studio Logo" />
             </div>
       &copy; {new Date().getFullYear()} Binec Studio. Todos los derechos son reservados.
