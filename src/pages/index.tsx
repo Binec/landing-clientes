@@ -37,7 +37,7 @@ const galleryItems: GalleryItem[] = [
     client: 'Hako Sustainable Goods',
     duration: '6 semanas',
     year: '2023',
-    coverImage: 'https://i.ibb.co/rKqyWLjN/thumb-1.jpg',
+    coverImage: 'assets/projects/cover.jpg',
     images: [
       'https://i.ibb.co/5XyQsT1F/06-corporate-logo.jpg',
       'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
