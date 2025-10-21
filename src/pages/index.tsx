@@ -218,35 +218,6 @@ function Counter({ end, title, suffix = '' }: CounterProps) {
   );
 }
 
-// Simple Image Component
-interface ImageWithFallbackProps {
-  src: string;
-  alt: string;
-  className?: string;
-}
-
-function ImageWithFallback({ src, alt, className = '' }: ImageWithFallbackProps) {
-  const [hasError, setHasError] = useState(false);
-
-  if (hasError) {
-    return (
-      <div className={`bg-gray-200 border-2 border-dashed border-gray-400 flex items-center justify-center ${className}`}>
-        <span className="text-gray-500 text-sm">Image not found</span>
-      </div>
-    );
-  }
-
-  return (
-    <img 
-      src={src} 
-      alt={alt}
-      className={className}
-      onError={() => setHasError(true)}
-      loading="lazy"
-    />
-  );
-}
-
 // --- Project Detail Component ---
 interface ProjectDetailProps {
   project: GalleryItem;
@@ -292,7 +263,7 @@ function ProjectDetail({ project, onBack, onNavigateToContact }: ProjectDetailPr
 
       {/* Full Width Image banner */}
       <div className="w-full aspect-[21/9] bg-gray-100 overflow-hidden relative">
-        <ImageWithFallback 
+        <img 
           src={project.coverImage} 
           alt={project.title}
           className="w-full h-full object-cover"
@@ -324,14 +295,14 @@ function ProjectDetail({ project, onBack, onNavigateToContact }: ProjectDetailPr
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-                  <ImageWithFallback 
+                  <img 
                     src={project.images[0]} 
                     alt={`${project.title} - Solution 1`}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-                  <ImageWithFallback 
+                  <img 
                     src={project.images[1] || project.images[0]} 
                     alt={`${project.title} - Solution 2`}
                     className="w-full h-full object-cover"
@@ -345,7 +316,7 @@ function ProjectDetail({ project, onBack, onNavigateToContact }: ProjectDetailPr
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Galería del Proyecto</h3>
               <div className="relative">
                 <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
-                  <ImageWithFallback 
+                  <img 
                     src={project.images[currentImageIndex]} 
                     alt={`${project.title} - Image ${currentImageIndex + 1}`}
                     className="w-full h-full object-cover"
@@ -424,7 +395,7 @@ function ProjectDetail({ project, onBack, onNavigateToContact }: ProjectDetailPr
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project.images.map((image, index) => (
               <div key={index} className="aspect-square bg-gray-100 rounded-xl overflow-hidden">
-                <ImageWithFallback 
+                <img 
                   src={image} 
                   alt={`${project.title} - Additional view ${index + 1}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
@@ -605,8 +576,8 @@ export default function MainContainer() {
             onClick={() => navigateTo()}
             className="flex items-center text-2xl font-bold text-gray-900 focus:outline-none"
           >
-            <div className="w-100 h-10  rounded-lg mr-3 flex items-center justify-center overflow-hidden">
-              <img src="/assets/binec-logo.png" alt="Binec Studio Logo" className="w-full h-full object-cover" />
+            <div className="w-100 h-10 bg-gray-900 rounded-lg mr-3 flex items-center justify-center overflow-hidden">
+              <img src="assets/binec-logo.png" alt="Binec Studio Logo" />
             </div>
             Binec Studio
           </button>
@@ -803,7 +774,7 @@ export default function MainContainer() {
                 aria-label={`View details of ${item.title}`}
               >
                 <div className="bg-gray-200 rounded-xl aspect-square mb-4 overflow-hidden group-hover:scale-105 transition-all">
-                  <ImageWithFallback 
+                  <img 
                     src={item.coverImage} 
                     alt={item.title}
                     className="w-full h-full object-cover"
@@ -855,7 +826,7 @@ export default function MainContainer() {
               {/* Left Column - Image Gallery */}
               <div className="relative">
                 <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
-                  <ImageWithFallback 
+                  <img 
                     src={selectedItem.images[currentImageIndex]} 
                     alt={`${selectedItem.title} - Image ${currentImageIndex + 1}`}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
