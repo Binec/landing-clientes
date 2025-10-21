@@ -42,6 +42,9 @@ const galleryItems: GalleryItem[] = [
       'assets/projects/project-1/image1.jpg',
       'assets/projects/project-1/image2.jpg',
       'assets/projects/project-1/image3.jpg',
+      'assets/projects/project-1/image4.jpg',
+      'assets/projects/project-1/image5.jpg',
+      'assets/projects/project-1/image6.jpg',
     ]
   },
   { 
