@@ -37,11 +37,11 @@ const galleryItems: GalleryItem[] = [
     client: 'Hako Sustainable Goods',
     duration: '6 semanas',
     year: '2023',
-    coverImage: '/assets/projects/project-1/cover.jpg',
+    coverImage: 'assets/projects/project-1/cover.jpg',
     images: [
-      '/assets/projects/project-1/image1.jpg',
-      '/assets/projects/project-1/image2.jpg',
-      '/assets/projects/project-1/image3.jpg',
+      'assets/projects/project-1/image1.jpg',
+      'assets/projects/project-1/image2.jpg',
+      'assets/projects/project-1/image3.jpg',
     ]
   },
   { 
