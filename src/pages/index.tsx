@@ -821,7 +821,7 @@ export default function MainContainer() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
-                      placeholder="Opcional"
+                      placeholder=""
                     />
                   </div>
                   <div>
