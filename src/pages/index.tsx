@@ -37,11 +37,11 @@ const galleryItems: GalleryItem[] = [
     client: 'Hako Sustainable Goods',
     duration: '6 semanas',
     year: '2023',
-    coverImage: '/assets/projects/project-1/cover.jpg',
+    coverImage: 'public/assets/projects/project-1/cover.jpg',
     images: [
-      '/assets/projects/project-1/image1.jpg',
-      '/assets/projects/project-1/image2.jpg',
-      '/assets/projects/project-1/image3.jpg'
+      'public/assets/projects/project-1/image1.jpg',
+      'public/assets/projects/project-1/image2.jpg',
+      'public/assets/projects/project-1/image3.jpg'
     ]
   },
   { 
@@ -56,11 +56,11 @@ const galleryItems: GalleryItem[] = [
     client: 'AI27 Technologies',
     duration: '12 semanas',
     year: '2023',
-    coverImage: '/assets/projects/project-2/cover.jpg',
+    coverImage: 'public/assets/projects/project-2/cover.jpg',
     images: [
-      '/assets/projects/project-2/image1.jpg',
-      '/assets/projects/project-2/image2.jpg',
-      '/assets/projects/project-2/image3.jpg'
+      'public/assets/projects/project-2/image1.jpg',
+      'public/assets/projects/project-2/image2.jpg',
+      'public/assets/projects/project-2/image3.jpg'
     ]
   },
   { 
