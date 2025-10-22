@@ -1052,7 +1052,7 @@ export default function MainContainer() {
   const Navigation = () => (
     <nav className="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-sm z-40 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-center md:justify-between items-center h-16">
           <button
             onClick={() => navigateTo()}
             className="flex items-center text-2xl font-bold text-gray-900 focus:outline-none"
@@ -1060,7 +1060,7 @@ export default function MainContainer() {
             <div className="w-100 h-10 mr-3 flex items-center justify-center overflow-hidden">
               <img src="assets/binec-logo.png" alt="Binec Studio Logo" />
             </div>
-            Binec Studio
+            <span className="hidden md:inline">Binec Studio</span>
           </button>
           <div className="hidden md:flex space-x-8">
             <button onClick={() => navigateTo('services')} className="text-gray-600 hover:text-gray-900 transition-all hover:scale-105 transform">Servicios</button>
@@ -1267,7 +1267,7 @@ export default function MainContainer() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Algunos de nuestros trabajos</h2>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-            {allProjects.map((item) => (
+            {allProjects.slice(0, 6).map((item) => (
               <div
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
@@ -1496,83 +1496,83 @@ export default function MainContainer() {
                   </a>
                 </div>
               </div>
-            </div>
 
-            {/* Contact Form */}
-            <div className="bg-gray-800 rounded-lg p-8">
-              <h3 className="text-2xl font-light mb-6 text-left">Escribe un mensaje</h3>
-              {formSubmitted ? (
-                <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+              {/* Contact Form */}
+              <div className="bg-gray-800 rounded-lg p-8">
+                <h3 className="text-2xl font-light mb-6 text-left">Escribe un mensaje</h3>
+                {formSubmitted ? (
+                  <div className="text-center py-8">
+                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <h4 className="text-xl font-medium mb-2">¡Gracias!</h4>
+                    <p className="text-gray-300">Tu mensaje se ha enviado correctamente</p>
                   </div>
-                  <h4 className="text-xl font-medium mb-2">¡Gracias!</h4>
-                  <p className="text-gray-300">Tu mensaje se ha enviado correctamente</p>
-                </div>
-              ) : (
-                <form 
-                  onSubmit={handleFormSubmit}
-                  className="space-y-6"
-                >
-                  <div>
-                    <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">Nombre</label>
-                    <input 
-                      type="text" 
-                      id="contact-name" 
-                      required 
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">Correo</label>
-                    <input 
-                      type="email" 
-                      id="contact-email" 
-                      required 
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-phone" className="block text-gray-300 font-medium mb-2 text-left">Teléfono</label>
-                    <input 
-                      type="tel" 
-                      id="contact-phone" 
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
-                      placeholder=""
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">Mensaje</label>
-                    <textarea 
-                      id="contact-message" 
-                      rows={4} 
-                      required 
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
-                    />
-                  </div>
-                  <button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className={`w-full py-3 rounded-full transition-all hover:shadow-lg transform font-medium ${
-                      isSubmitting 
-                        ? 'bg-gray-600 cursor-not-allowed' 
-                        : 'bg-white text-gray-900 hover:bg-gray-200 hover:scale-105'
-                    }`}
+                ) : (
+                  <form 
+                    onSubmit={handleFormSubmit}
+                    className="space-y-6"
                   >
-                    {isSubmitting ? 'SENDING...' : 'ENVIAR MENSAJE'}
-                  </button>
-                </form>
-              )}
+                    <div>
+                      <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">Nombre</label>
+                      <input 
+                        type="text" 
+                        id="contact-name" 
+                        required 
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">Correo</label>
+                      <input 
+                        type="email" 
+                        id="contact-email" 
+                        required 
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-phone" className="block text-gray-300 font-medium mb-2 text-left">Teléfono</label>
+                      <input 
+                        type="tel" 
+                        id="contact-phone" 
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
+                        placeholder=""
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">Mensaje</label>
+                      <textarea 
+                        id="contact-message" 
+                        rows={4} 
+                        required 
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
+                      />
+                    </div>
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className={`w-full py-3 rounded-full transition-all hover:shadow-lg transform font-medium ${
+                        isSubmitting 
+                          ? 'bg-gray-600 cursor-not-allowed' 
+                          : 'bg-white text-gray-900 hover:bg-gray-200 hover:scale-105'
+                      }`}
+                    >
+                      {isSubmitting ? 'SENDING...' : 'ENVIAR MENSAJE'}
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
         </div>
