@@ -24,7 +24,18 @@ interface FormData {
   message: string;
 }
 
-const galleryItems: GalleryItem[] = [
+interface Service {
+  id: string;
+  name: string;
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+  projects: GalleryItem[];
+}
+
+// Web Design Projects
+const webDesignProjects: GalleryItem[] = [
   { 
     id: 1, 
     title: 'Hako - Identidad de Marca', 
@@ -37,33 +48,36 @@ const galleryItems: GalleryItem[] = [
     client: 'Hako Sustainable Goods',
     duration: '6 semanas',
     year: '2023',
-    coverImage: 'assets/projects/project-1/cover.jpg',
+    coverImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     images: [
-      'assets/projects/project-1/image1.jpg',
-      'assets/projects/project-1/image2.jpg',
-      'assets/projects/project-1/image3.jpg',
-      'assets/projects/project-1/image4.jpg',
-      'assets/projects/project-1/image5.jpg',
-      'assets/projects/project-1/image6.jpg',
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     ]
   },
   { 
     id: 2, 
-    title: 'AI27 - Product Launch', 
-    category: 'Web App, Native App, Diseño Web, Diseño UX', 
-    description: 'Diseño de experiencia de usuario, aplicaciones web, nativas y sitio web. Implementación de AI para predicción de riesgos en logística.', 
-    fullDescription: 'AI27 es una plataforma de inteligencia artificial especializada en la predicción de riesgos logísticos para empresas de transporte y cadena de suministro. Desarrollamos un ecosistema digital completo que incluye dashboard web, aplicación móvil y sitio corporativo.',
-    challenge: 'Crear interfaces intuitivas para visualizar datos complejos de predicción de riesgos, haciendo accesible la inteligencia artificial a usuarios no técnicos en el sector logístico.',
-    solution: 'Diseñamos un sistema de visualización de datos con gráficos interactivos y alertas contextuales. Implementamos un diseño responsivo que funciona igualmente bien en desktop y dispositivos móviles para profesionales en movimiento.',
-    services: ['UI/UX Design', 'Web Application', 'Native App', 'AI Integration', 'Dashboard Design'],
-    client: 'AI27 Technologies',
-    duration: '12 semanas',
+    title: 'TechFlow - Portal Corporativo', 
+    category: 'Diseño Web, UX/UI', 
+    description: 'Portal corporativo moderno con dashboard interactivo y experiencia de usuario optimizada.', 
+    fullDescription: 'TechFlow necesitaba un portal corporativo que permitiera a sus empleados acceder a información centralizada. Diseñamos una interfaz intuitiva con navegación clara y componentes reutilizables.',
+    challenge: 'Crear una interfaz que fuera accesible para usuarios con diferentes niveles de experiencia técnica.',
+    solution: 'Implementamos un diseño limpio con iconografía clara y flujos de navegación intuitivos. Cada sección está optimizada para reducir la curva de aprendizaje.',
+    services: ['Web Design', 'UX Research', 'Prototyping', 'Visual Design'],
+    client: 'TechFlow Solutions',
+    duration: '8 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     images: [
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
     ]
   },
   { 
@@ -78,34 +92,18 @@ const galleryItems: GalleryItem[] = [
     client: 'Grupo Kalte',
     duration: '10 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     images: [
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
     ]
   },
   { 
     id: 4, 
-    title: 'Le Pain Quotidien - Campaña Digital', 
-    category: 'Redes Sociales, Creación de Contenido', 
-    description: 'Serie de contenido semanal para marca de fitness con alto impacto visual.', 
-    fullDescription: 'Campaña integral de redes sociales para Le Pain Quotidien, enfocada en posicionar su nueva línea de productos saludables y promover sus espacios como lugares de trabajo remoto. Desarrollamos contenido estratégico para Instagram, Facebook y TikTok.',
-    challenge: 'Atraer a una audiencia más joven sin alienar a su base de clientes tradicional, mostrando la evolución de la marca manteniendo su esencia artesanal.',
-    solution: 'Creamos series de contenido específicas para cada plataforma: tutorials en Instagram Reels, behind-the-scenes en Stories, y contenido inspiracional en Facebook. Implementamos una estrategia de UGC (User Generated Content) que incrementó el engagement en un 240%.',
-    services: ['Social Media Strategy', 'Content Creation', 'Community Management', 'Video Production', 'Performance Analytics'],
-    client: 'Le Pain Quotidien',
-    duration: '16 semanas',
-    year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
-    ]
-  },
-  { 
-    id: 5, 
     title: 'Tomodachi - Portfolio Website', 
     category: 'Diseño Web, Creación de Contenido, Diseño Gráfico', 
     description: 'Portfolio creativo para fotógrafo con galería interactiva y diseño inmersivo.', 
@@ -116,18 +114,301 @@ const galleryItems: GalleryItem[] = [
     client: 'Tomodachi Photography',
     duration: '4 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     images: [
-      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+];
+
+// Web Apps Projects
+const webAppsProjects: GalleryItem[] = [
+  { 
+    id: 5, 
+    title: 'AI27 - Product Launch', 
+    category: 'Web App, Native App, Diseño Web, Diseño UX', 
+    description: 'Diseño de experiencia de usuario, aplicaciones web, nativas y sitio web. Implementación de AI para predicción de riesgos en logística.', 
+    fullDescription: 'AI27 es una plataforma de inteligencia artificial especializada en la predicción de riesgos logísticos para empresas de transporte y cadena de suministro. Desarrollamos un ecosistema digital completo que incluye dashboard web, aplicación móvil y sitio corporativo.',
+    challenge: 'Crear interfaces intuitivas para visualizar datos complejos de predicción de riesgos, haciendo accesible la inteligencia artificial a usuarios no técnicos en el sector logístico.',
+    solution: 'Diseñamos un sistema de visualización de datos con gráficos interactivos y alertas contextuales. Implementamos un diseño responsivo que funciona igualmente bien en desktop y dispositivos móviles para profesionales en movimiento.',
+    services: ['UI/UX Design', 'Web Application', 'Native App', 'AI Integration', 'Dashboard Design'],
+    client: 'AI27 Technologies',
+    duration: '12 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
     ]
   },
   { 
     id: 6, 
+    title: 'CloudSync - Gestor de Archivos', 
+    category: 'Web App, Cloud Storage', 
+    description: 'Aplicación web para gestión y sincronización de archivos en la nube con interfaz intuitiva.', 
+    fullDescription: 'CloudSync es una plataforma de almacenamiento en la nube diseñada para equipos de trabajo remoto. Desarrollamos una aplicación web completa con sincronización en tiempo real, control de versiones y colaboración integrada.',
+    challenge: 'Manejar sincronización de archivos en tiempo real sin afectar el rendimiento de la aplicación, manteniendo una interfaz responsiva y fluida.',
+    solution: 'Implementamos WebSockets para sincronización en tiempo real, optimización de caché y lazy loading de archivos. La interfaz utiliza drag-and-drop intuitivo y vista previa de archivos.',
+    services: ['Web Application', 'Real-time Sync', 'Cloud Architecture', 'UI/UX Design', 'Security'],
+    client: 'CloudSync Inc',
+    duration: '14 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 7, 
+    title: 'TaskMaster - Gestor de Proyectos', 
+    category: 'Web App, Project Management', 
+    description: 'Plataforma de gestión de proyectos con tableros Kanban, cronogramas y colaboración en equipo.', 
+    fullDescription: 'TaskMaster es una herramienta de gestión de proyectos diseñada para equipos ágiles. Incluye tableros Kanban personalizables, diagramas de Gantt, seguimiento de tiempo y reportes detallados.',
+    challenge: 'Crear una interfaz que maneje múltiples vistas de datos complejos sin sacrificar la usabilidad o el rendimiento.',
+    solution: 'Implementamos virtualización de listas para manejar grandes volúmenes de tareas, vistas múltiples sincronizadas y actualizaciones en tiempo real con WebSockets.',
+    services: ['Web Application', 'Real-time Updates', 'Data Visualization', 'Collaboration Tools'],
+    client: 'TaskMaster Solutions',
+    duration: '16 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 8, 
+    title: 'DataViz - Plataforma de Análisis', 
+    category: 'Web App, Data Analytics', 
+    description: 'Plataforma de análisis de datos con visualizaciones interactivas y reportes personalizables.', 
+    fullDescription: 'DataViz es una plataforma de business intelligence que permite a las empresas visualizar y analizar sus datos en tiempo real. Incluye dashboards personalizables, gráficos interactivos y exportación de reportes.',
+    challenge: 'Procesar y visualizar grandes volúmenes de datos sin afectar el rendimiento de la aplicación.',
+    solution: 'Implementamos agregación de datos en el servidor, caching inteligente y gráficos optimizados con WebGL para renderización de millones de puntos de datos.',
+    services: ['Web Application', 'Data Visualization', 'Real-time Analytics', 'Custom Dashboards'],
+    client: 'DataViz Analytics',
+    duration: '18 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+];
+
+// Marketing Digital Projects
+const marketingProjects: GalleryItem[] = [
+  { 
+    id: 9, 
+    title: 'Le Pain Quotidien - Campaña Digital', 
+    category: 'Redes Sociales, Creación de Contenido', 
+    description: 'Serie de contenido semanal para marca de fitness con alto impacto visual.', 
+    fullDescription: 'Campaña integral de redes sociales para Le Pain Quotidien, enfocada en posicionar su nueva línea de productos saludables y promover sus espacios como lugares de trabajo remoto. Desarrollamos contenido estratégico para Instagram, Facebook y TikTok.',
+    challenge: 'Atraer a una audiencia más joven sin alienar a su base de clientes tradicional, mostrando la evolución de la marca manteniendo su esencia artesanal.',
+    solution: 'Creamos series de contenido específicas para cada plataforma: tutorials en Instagram Reels, behind-the-scenes en Stories, y contenido inspiracional en Facebook. Implementamos una estrategia de UGC (User Generated Content) que incrementó el engagement en un 240%.',
+    services: ['Social Media Strategy', 'Content Creation', 'Community Management', 'Video Production', 'Performance Analytics'],
+    client: 'Le Pain Quotidien',
+    duration: '16 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 10, 
+    title: 'FitLife - Campaña de Lanzamiento', 
+    category: 'Marketing Digital, Redes Sociales', 
+    description: 'Campaña multicanal para lanzamiento de aplicación de fitness con estrategia de influencers.', 
+    fullDescription: 'FitLife es una aplicación de fitness que necesitaba un lanzamiento impactante. Desarrollamos una campaña integrada con influencers, contenido viral y publicidad segmentada en múltiples plataformas.',
+    challenge: 'Generar buzz y descargas en el lanzamiento de una aplicación en un mercado saturado de apps de fitness.',
+    solution: 'Creamos contenido viral con desafíos fitness, colaboramos con micro-influencers relevantes y ejecutamos campañas de publicidad programática con targeting preciso. Logramos 50k descargas en el primer mes.',
+    services: ['Campaign Strategy', 'Influencer Marketing', 'Content Creation', 'Paid Advertising', 'Analytics'],
+    client: 'FitLife App',
+    duration: '12 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 11, 
+    title: 'EcoStore - Estrategia SEO y SEM', 
+    category: 'Marketing Digital, SEO, SEM', 
+    description: 'Estrategia integral de posicionamiento en buscadores y publicidad pagada para tienda online.', 
+    fullDescription: 'EcoStore es una tienda online de productos ecológicos que necesitaba aumentar su visibilidad en buscadores. Implementamos una estrategia completa de SEO técnico, contenido optimizado y campañas SEM.',
+    challenge: 'Competir en un nicho altamente competitivo con presupuesto limitado para publicidad pagada.',
+    solution: 'Optimizamos la arquitectura del sitio, creamos contenido de alto valor para posicionamiento orgánico y ejecutamos campañas SEM altamente segmentadas. Logramos aumentar el tráfico orgánico en un 320% en 6 meses.',
+    services: ['SEO Strategy', 'SEM Campaigns', 'Content Marketing', 'Technical SEO', 'Conversion Optimization'],
+    client: 'EcoStore',
+    duration: '24 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 12, 
+    title: 'BrandBoost - Email Marketing', 
+    category: 'Marketing Digital, Email Marketing', 
+    description: 'Estrategia de email marketing con automatización y personalización avanzada.', 
+    fullDescription: 'BrandBoost es una agencia que necesitaba mejorar su retención de clientes a través de email marketing. Diseñamos una estrategia de automatización con segmentación avanzada y contenido personalizado.',
+    challenge: 'Aumentar la tasa de apertura y conversión de emails en un mercado saturado de mensajes de marketing.',
+    solution: 'Implementamos segmentación basada en comportamiento, A/B testing continuo y automatización de flujos de bienvenida y re-engagement. Logramos aumentar la tasa de conversión en un 180%.',
+    services: ['Email Strategy', 'Automation', 'Segmentation', 'A/B Testing', 'Analytics'],
+    client: 'BrandBoost Agency',
+    duration: '8 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+];
+
+// Social Media Content Projects
+const socialMediaProjects: GalleryItem[] = [
+  { 
+    id: 13, 
+    title: 'Urban Vibes - Identidad Visual', 
+    category: 'Redes Sociales, Diseño Gráfico', 
+    description: 'Creación de identidad visual completa para marca de moda urbana en redes sociales.', 
+    fullDescription: 'Urban Vibes es una marca de ropa urbana que necesitaba una identidad visual cohesiva en redes sociales. Creamos un sistema de diseño completo con paleta de colores, tipografía y componentes reutilizables.',
+    challenge: 'Crear una identidad visual que fuera moderna, atractiva y consistente en todas las plataformas de redes sociales.',
+    solution: 'Desarrollamos un sistema de diseño modular con templates reutilizables para Instagram, TikTok y Pinterest. Incluye guías de color, tipografía y composición que mantienen la coherencia visual.',
+    services: ['Visual Identity', 'Graphic Design', 'Social Media Templates', 'Brand Guidelines'],
+    client: 'Urban Vibes',
+    duration: '6 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 14, 
+    title: 'TechNews - Contenido Educativo', 
+    category: 'Redes Sociales, Video Content', 
+    description: 'Serie de videos educativos sobre tecnología para LinkedIn y YouTube.', 
+    fullDescription: 'TechNews es un canal de educación tecnológica que necesitaba contenido de calidad para LinkedIn y YouTube. Creamos una serie de videos cortos educativos con animaciones y gráficos explicativos.',
+    challenge: 'Simplificar conceptos técnicos complejos en videos cortos y atractivos para diferentes plataformas.',
+    solution: 'Creamos videos de 60-90 segundos con animaciones explicativas, gráficos dinámicos y subtítulos. Cada video está optimizado para la plataforma específica (vertical para TikTok, horizontal para YouTube).',
+    services: ['Video Production', 'Animation', 'Motion Graphics', 'Content Strategy', 'Editing'],
+    client: 'TechNews',
+    duration: '10 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 15, 
+    title: 'WellnessHub - Community Management', 
+    category: 'Redes Sociales, Community Management', 
+    description: 'Gestión integral de comunidad en redes sociales para marca de bienestar.', 
+    fullDescription: 'WellnessHub es una marca de bienestar que necesitaba gestión profesional de su comunidad en redes sociales. Implementamos estrategia de engagement, respuesta a comentarios y creación de contenido comunitario.',
+    challenge: 'Construir una comunidad activa y comprometida en redes sociales desde cero.',
+    solution: 'Creamos un calendario de contenido estratégico, respondemos a comentarios en menos de 2 horas, organizamos desafíos comunitarios y creamos contenido generado por usuarios. Logramos crecer de 5k a 50k seguidores en 6 meses.',
+    services: ['Community Management', 'Content Calendar', 'Engagement Strategy', 'Crisis Management'],
+    client: 'WellnessHub',
+    duration: '26 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 16, 
+    title: 'CreativeStudio - Reels y Stories', 
+    category: 'Redes Sociales, Video Content', 
+    description: 'Producción de Reels y Stories para agencia creativa con contenido viral.', 
+    fullDescription: 'CreativeStudio es una agencia creativa que necesitaba contenido viral para Instagram. Creamos una serie de Reels y Stories que mostraban el proceso creativo detrás de sus proyectos.',
+    challenge: 'Crear contenido que fuera tanto educativo como entretenido, mostrando el trabajo de la agencia de forma atractiva.',
+    solution: 'Creamos Reels con transiciones dinámicas, time-lapses de proyectos y behind-the-scenes Stories. Cada contenido está optimizado para viralidad con trending sounds y hashtags estratégicos.',
+    services: ['Video Production', 'Reels Creation', 'Stories Strategy', 'Trending Content', 'Editing'],
+    client: 'CreativeStudio',
+    duration: '12 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+];
+
+// 3D Modeling, AR and VR Projects
+const threeDProjects: GalleryItem[] = [
+  { 
+    id: 17, 
     title: 'Binec - Diseño Web 3D, RV y RA', 
     category: 'Modelado 3D, Realidad Virtual y Aumentada', 
-    description: 'Campaña de lanzamiento en redes sociales con estrategia multicanal.', 
+    description: 'Experiencias inmersivas con elementos 3D interactivos y prototipos de realidad aumentada.', 
     fullDescription: 'Desarrollo de experiencias inmersivas para Binec Studio, incorporando elementos 3D interactivos y prototipos de realidad aumentada para mostrar el potencial de estas tecnologías en proyectos comerciales.',
     challenge: 'Demostrar las capacidades técnicas del estudio en entornos 3D y realidad extendida a través de medios tradicionales (web), creando experiencias accesibles que no requieren hardware especializado.',
     solution: 'Implementamos WebGL para visualizar modelos 3D directamente en el navegador, junto con experiencias de AR que utilizan la cámara del dispositivo móvil. Creamos casos de estudio interactivos que muestran el proceso creativo detrás de cada proyecto.',
@@ -135,14 +416,133 @@ const galleryItems: GalleryItem[] = [
     client: 'Binec Studio',
     duration: '8 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     images: [
-      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 18, 
+    title: 'AutoVR - Configurador 3D de Vehículos', 
+    category: 'Modelado 3D, Realidad Virtual', 
+    description: 'Experiencia inmersiva en VR para configurar y visualizar vehículos en tiempo real.', 
+    fullDescription: 'AutoVR es una plataforma de realidad virtual que permite a los clientes configurar y visualizar vehículos en un entorno 3D inmersivo. Desarrollamos modelos 3D detallados de múltiples vehículos con opciones de personalización.',
+    challenge: 'Crear modelos 3D de alta calidad que funcionen en tiempo real en dispositivos VR sin sacrificar la calidad visual.',
+    solution: 'Optimizamos los modelos 3D con técnicas de LOD (Level of Detail), implementamos shaders personalizados y utilizamos texturas PBR para realismo. La experiencia funciona en Oculus Quest, HTC Vive y PlayStation VR.',
+    services: ['3D Modeling', 'VR Development', 'Optimization', 'Interactive Design', 'Physics Engine'],
+    client: 'AutoVR Inc',
+    duration: '16 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 19, 
+    title: 'FurnitureAR - Visualizador de Muebles', 
+    category: 'Modelado 3D, Realidad Aumentada', 
+    description: 'Aplicación AR que permite visualizar muebles en el espacio real antes de comprar.', 
+    fullDescription: 'FurnitureAR es una aplicación de realidad aumentada que permite a los clientes visualizar muebles en sus hogares antes de comprar. Desarrollamos modelos 3D de más de 500 productos con física realista.',
+    challenge: 'Crear una experiencia AR fluida que funcione en dispositivos móviles con diferentes capacidades de hardware.',
+    solution: 'Implementamos detección de planos AR, física de colisiones simplificada y optimización de modelos. La aplicación funciona en iOS y Android con ARKit y ARCore respectivamente.',
+    services: ['3D Modeling', 'AR Development', 'Mobile Optimization', 'Physics Simulation', 'UI/UX Design'],
+    client: 'FurnitureAR',
+    duration: '14 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ]
+  },
+  { 
+    id: 20, 
+    title: 'MedicalVR - Simulador Quirúrgico', 
+    category: 'Modelado 3D, Realidad Virtual', 
+    description: 'Simulador quirúrgico en VR para entrenamiento médico con física realista.', 
+    fullDescription: 'MedicalVR es una plataforma de entrenamiento médico que utiliza realidad virtual para simular procedimientos quirúrgicos. Desarrollamos modelos anatómicos precisos con física realista y retroalimentación háptica.',
+    challenge: 'Crear simulaciones médicamente precisas que sean educativas y seguras para el entrenamiento de cirujanos.',
+    solution: 'Trabajamos con expertos médicos para asegurar precisión anatómica, implementamos física de tejidos blandos y duros, y creamos sistemas de puntuación basados en métricas quirúrgicas reales.',
+    services: ['3D Modeling', 'VR Development', 'Physics Simulation', 'Medical Accuracy', 'Haptic Feedback'],
+    client: 'MedicalVR',
+    duration: '20 semanas',
+    year: '2023',
+    coverImage: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
     ]
   },
 ];
+
+const services: Service[] = [
+  {
+    id: 'web-design',
+    name: 'Diseño Web',
+    title: 'Diseño Web',
+    description: 'Sitios web personalizados que combinan un diseño creativo y funcionalidad.',
+    icon: 'web',
+    color: 'blue',
+    projects: webDesignProjects
+  },
+  {
+    id: 'web-apps',
+    name: 'Aplicaciones Web',
+    title: 'Aplicaciones Web',
+    description: 'Desarrollo de aplicaciones web robustas y escalables.',
+    icon: 'code',
+    color: 'purple',
+    projects: webAppsProjects
+  },
+  {
+    id: 'marketing',
+    name: 'Marketing Digital',
+    title: 'Marketing Digital',
+    description: 'Campañas digitales personalizadas para captación de clientes.',
+    icon: 'chart',
+    color: 'green',
+    projects: marketingProjects
+  },
+  {
+    id: 'social-media',
+    name: 'Contenido para Redes',
+    title: 'Contenido para Redes',
+    description: 'Creación de contenido visual atractivo y estratégico.',
+    icon: 'heart',
+    color: 'pink',
+    projects: socialMediaProjects
+  },
+  {
+    id: '3d-ar-vr',
+    name: 'Modelado 3D, AR y VR',
+    title: 'Modelado 3D, AR y VR',
+    description: 'Experiencias inmersivas con tecnologías de realidad aumentada y virtual.',
+    icon: 'cube',
+    color: 'indigo',
+    projects: threeDProjects
+  },
+];
+
+const allProjects = [...webDesignProjects, ...webAppsProjects, ...marketingProjects, ...socialMediaProjects, ...threeDProjects];
 
 // --- Hooks ---
 function useScrollAnimation() {
@@ -265,7 +665,7 @@ function ProjectDetail({ project, onBack, onNavigateToContact }: ProjectDetailPr
       </section>
 
       {/* Full Width Image banner */}
-      <div className="w-full aspect-[21/9] bg-gray-100 overflow-hidden relative">
+      <div className="w-full aspect-video bg-gray-100 overflow-hidden relative">
         <img 
           src={project.coverImage} 
           alt={project.title}
@@ -423,13 +823,79 @@ function ProjectDetail({ project, onBack, onNavigateToContact }: ProjectDetailPr
   );
 }
 
+// --- Service Projects View ---
+interface ServiceProjectsViewProps {
+  service: Service;
+  onBack: () => void;
+  onProjectClick: (project: GalleryItem) => void;
+}
+
+function ServiceProjectsView({ service, onBack, onProjectClick }: ServiceProjectsViewProps) {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <button 
+            onClick={onBack}
+            className="inline-flex items-center text-gray-500 hover:text-gray-900 mb-8 transition-colors"
+          >
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Volver a servicios
+          </button>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+            {service.title}
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl">
+            {service.description}
+          </p>
+        </div>
+      </section>
+
+      {/* Projects Grid */}
+      <div className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-light text-center text-gray-900 mb-16">Proyectos de {service.name}</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+            {service.projects.map((project) => (
+              <div
+                key={project.id}
+                onClick={() => onProjectClick(project)}
+                className="cursor-pointer group"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter') onProjectClick(project); }}
+                aria-label={`View details of ${project.title}`}
+              >
+                <div className="bg-gray-200 rounded-xl aspect-square mb-4 overflow-hidden group-hover:scale-105 transition-all">
+                  <img 
+                    src={project.coverImage} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-base md:text-lg font-medium text-gray-900 group-hover:text-gray-600 transition-colors line-clamp-1">
+                  {project.title}
+                </h3>
+                <p className="text-xs md:text-sm text-gray-500">{project.category}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // --- Main Component ---
-type ViewState = 'landing' | 'project';
+type ViewState = 'landing' | 'project' | 'service-projects';
 
 export default function MainContainer() {
   // Routing & Navigation State
   const [currentView, setCurrentView] = useState<ViewState>('landing');
   const [currentProject, setCurrentProject] = useState<GalleryItem | null>(null);
+  const [currentService, setCurrentService] = useState<Service | null>(null);
   const [pendingScroll, setPendingScroll] = useState<string | null>(null);
 
   // Landing Page State
@@ -451,7 +917,6 @@ export default function MainContainer() {
   const statsAnimation = useScrollAnimation();
 
   // --- Effects ---
-  // Handle keyboard (Escape to close modal)
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') setSelectedItem(null);
@@ -460,15 +925,12 @@ export default function MainContainer() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Reset image index when opening new modal item
   useEffect(() => {
     if (selectedItem) setCurrentImageIndex(0);
   }, [selectedItem]);
 
-  // Handle pending scrolls after view change
   useEffect(() => {
     if (currentView === 'landing' && pendingScroll) {
-      // Small timeout to ensure DOM is ready
       const timer = setTimeout(() => {
         const element = document.getElementById(pendingScroll);
         if (element) {
@@ -490,15 +952,33 @@ export default function MainContainer() {
 
   const handleBackToProjects = () => {
     setCurrentView('landing');
-    // Small delay to ensure the landing page is rendered before scrolling
     setTimeout(() => {
       document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
+  const handleServiceClick = (service: Service) => {
+    setCurrentService(service);
+    setCurrentView('service-projects');
+    window.scrollTo(0, 0);
+  };
+
+  const handleBackToServices = () => {
+    setCurrentView('landing');
+    setTimeout(() => {
+      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   const navigateTo = (sectionId?: string) => {
     if (currentView === 'project') {
-      // If we are on project view, switch to landing and set pending scroll
+      setCurrentView('landing');
+      if (sectionId) {
+        setPendingScroll(sectionId);
+      } else {
+        window.scrollTo(0, 0);
+      }
+    } else if (currentView === 'service-projects') {
       setCurrentView('landing');
       if (sectionId) {
         setPendingScroll(sectionId);
@@ -506,7 +986,6 @@ export default function MainContainer() {
         window.scrollTo(0, 0);
       }
     } else {
-      // If already on landing, just scroll
       if (sectionId) {
         document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
       } else {
@@ -527,7 +1006,6 @@ export default function MainContainer() {
     }
   };
 
-  // Form handlers
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({
@@ -597,8 +1075,8 @@ export default function MainContainer() {
   const Footer = () => (
     <footer className="py-8 text-center text-gray-500 text-sm bg-gray-900 border-t border-gray-800">
       <div className="w-100 h-10 mr-3 mb-30 flex items-center justify-center overflow-hidden">
-              <img src="assets/binec-logo.png" alt="Binec Studio Logo" />
-            </div>
+        <img src="assets/binec-logo.png" alt="Binec Studio Logo" />
+      </div>
       &copy; {new Date().getFullYear()} Binec Studio. Todos los derechos son reservados.
     </footer>
   );
@@ -626,6 +1104,21 @@ export default function MainContainer() {
           project={currentProject} 
           onBack={handleBackToProjects}
           onNavigateToContact={() => navigateTo('contact')}
+        />
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    );
+  }
+
+  if (currentView === 'service-projects' && currentService) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Navigation />
+        <ServiceProjectsView 
+          service={currentService}
+          onBack={handleBackToServices}
+          onProjectClick={handleViewFullProject}
         />
         <Footer />
         <WhatsAppButton />
@@ -671,9 +1164,9 @@ export default function MainContainer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <Counter end={35} title="Clientes" />
-            <Counter end={175}suffix="k" title="Proyectos"></Counter>
+            <Counter end={175} suffix="k" title="Proyectos" />
             <div className="col-span-2 md:col-span-1">
-               <Counter end={100} suffix="+" title="Productos digitales" />
+              <Counter end={100} suffix="+" title="Productos digitales" />
             </div>
           </div>
         </div>
@@ -692,56 +1185,60 @@ export default function MainContainer() {
       >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Nuestros Servicios</h2>
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Web Design */}
-            <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-6 bg-blue-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-blue-200 transition-all duration-300">
-                <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {services.map((service) => (
+              <div 
+                key={service.id}
+                onClick={() => handleServiceClick(service)}
+                className="text-center group cursor-pointer"
+              >
+                <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${
+                  service.color === 'blue' ? 'bg-blue-100 group-hover:bg-blue-200' :
+                  service.color === 'purple' ? 'bg-purple-100 group-hover:bg-purple-200' :
+                  service.color === 'green' ? 'bg-green-100 group-hover:bg-green-200' :
+                  service.color === 'pink' ? 'bg-pink-100 group-hover:bg-pink-200' :
+                  'bg-indigo-100 group-hover:bg-indigo-200'
+                }`}>
+                  {service.color === 'blue' && (
+                    <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )}
+                  {service.color === 'purple' && (
+                    <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  )}
+                  {service.color === 'green' && (
+                    <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                    </svg>
+                  )}
+                  {service.color === 'pink' && (
+                    <svg className="w-10 h-10 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                  )}
+                  {service.color === 'indigo' && (
+                    <svg className="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m0 0l-2-1m2 1v2.5M14 4l-2 1m0 0l-2-1m2 1v2.5" />
+                    </svg>
+                  )}
+                </div>
+                <h3 className={`text-2xl font-medium text-gray-900 mb-4 group-hover:transition-colors ${
+                  service.color === 'blue' ? 'group-hover:text-blue-600' :
+                  service.color === 'purple' ? 'group-hover:text-purple-600' :
+                  service.color === 'green' ? 'group-hover:text-green-600' :
+                  service.color === 'pink' ? 'group-hover:text-pink-600' :
+                  'group-hover:text-indigo-600'
+                }`}>
+                  {service.name}
+                </h3>
+                <p className="text-gray-600">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">Diseño Web</h3>
-              <p className="text-gray-600">
-                Sitios web personalizados que combinan un diseño creativo y funcionalidad. Desde el concepto hasta el lanzamiento, creamos experiencias digitales que convierten.
-              </p>
-            </div>
-            {/* Web Apps */}
-            <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-6 bg-purple-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-purple-200 transition-all duration-300">
-                <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">Aplicaciones Web</h3>
-              <p className="text-gray-600">
-                Desarrollo de aplicaciones web robustas y escalables. Creamos herramientas digitales a medida para optimizar los procesos de tu negocio ofreciendo la mejor experiencia del usuario.
-              </p>
-            </div>
-            {/* Digital Marketing */}
-            <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-green-200 transition-all duration-300">
-                <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-green-600 transition-colors">Marketing Digital</h3>
-              <p className="text-gray-600">
-                Campañas digitales personalizadas para captación de clientes potenciales. Creamos, programamos, y manejamos las cuentas para crecer con tu audiencia.
-              </p>
-            </div>
-            {/* Social Media Content */}
-            <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-6 bg-pink-100 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-pink-200 transition-all duration-300">
-                <svg className="w-10 h-10 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4 group-hover:text-pink-600 transition-colors">Contenido para Redes</h3>
-              <p className="text-gray-600">
-                Creación de contenido visual atractivo y estratégico para tus redes sociales. Fotos, videos y diseños que conectan con tu audiencia y fortalecen tu marca.
-              </p>
-            </div>
+            ))}
           </div>
           
           {/* Added CTA below services grid */}
@@ -770,7 +1267,7 @@ export default function MainContainer() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Algunos de nuestros trabajos</h2>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-            {galleryItems.map((item) => (
+            {allProjects.map((item) => (
               <div
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
@@ -982,7 +1479,7 @@ export default function MainContainer() {
                   {/* Instagram */}
                   <a href="https://www.instagram.com/ferrusca_rea" className="w-12 h-12 bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 rounded-full flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all" aria-label="Instagram">
                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.78 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                      </svg>
                   </a>
                   {/* SoundCloud */}
@@ -994,7 +1491,7 @@ export default function MainContainer() {
                   {/* LinkedIn */}
                   <a href="https://www.linkedin.com/in/david-ferrusca-a0800a104/" className="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 hover:scale-110 transition-all" aria-label="LinkedIn">
                     <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                      <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
                     </svg>
                   </a>
                 </div>
