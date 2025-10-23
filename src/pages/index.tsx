@@ -1173,6 +1173,7 @@ export default function MainContainer() {
       </div>
 
       {/* Services Section */}
+      {/* Services Section - Flexbox approach */}
       <div 
         id="services" 
         ref={servicesAnimation.ref}
@@ -1185,13 +1186,16 @@ export default function MainContainer() {
       >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-light text-center text-gray-900 mb-16">Nuestros Servicios</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          
+          {/* Flexbox container that centers everything */}
+          <div className="flex flex-wrap justify-center gap-12">
             {services.map((service) => (
               <div 
                 key={service.id}
                 onClick={() => handleServiceClick(service)}
-                className="text-center group cursor-pointer"
+                className="text-center group cursor-pointer flex flex-col h-full w-full sm:w-80"
               >
+                {/* Keep all the icon and content code exactly the same */}
                 <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${
                   service.color === 'blue' ? 'bg-blue-100 group-hover:bg-blue-200' :
                   service.color === 'purple' ? 'bg-purple-100 group-hover:bg-purple-200' :
@@ -1199,26 +1203,31 @@ export default function MainContainer() {
                   service.color === 'pink' ? 'bg-pink-100 group-hover:bg-pink-200' :
                   'bg-indigo-100 group-hover:bg-indigo-200'
                 }`}>
+                  {/* Web Design Icon */}
                   {service.color === 'blue' && (
                     <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   )}
+                  {/* Web Apps Icon */}
                   {service.color === 'purple' && (
                     <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
                   )}
+                  {/* Marketing Digital Icon */}
                   {service.color === 'green' && (
                     <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                     </svg>
                   )}
+                  {/* Social Media Icon */}
                   {service.color === 'pink' && (
                     <svg className="w-10 h-10 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   )}
+                  {/* 3D Modeling Icon */}
                   {service.color === 'indigo' && (
                     <svg className="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m0 0l-2-1m2 1v2.5M14 4l-2 1m0 0l-2-1m2 1v2.5" />
@@ -1234,14 +1243,27 @@ export default function MainContainer() {
                 }`}>
                   {service.name}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 flex-grow">
                   {service.description}
+                </p>
+                
+                <p className={`mt-6 inline-flex items-center justify-center font-medium transition-colors ${
+                  service.color === 'blue' ? 'text-blue-600 group-hover:text-blue-700' :
+                  service.color === 'purple' ? 'text-purple-600 group-hover:text-purple-700' :
+                  service.color === 'green' ? 'text-green-600 group-hover:text-green-700' :
+                  service.color === 'pink' ? 'text-pink-600 group-hover:text-pink-700' :
+                  'text-indigo-600 group-hover:text-indigo-700'
+                }`}>
+                  Ver más
+                  <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </p>
               </div>
             ))}
           </div>
           
-          {/* Added CTA below services grid */}
+          {/* CTA below services grid */}
           <div className="mt-16 text-center">
             <button
               onClick={() => navigateTo('contact')}
@@ -1405,15 +1427,31 @@ export default function MainContainer() {
                   </div>
                 </div>
                 
-                <button 
-                  onClick={() => handleViewFullProject(selectedItem)}
-                  className="mt-8 bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-all hover:scale-105 hover:shadow-lg transform flex items-center justify-center space-x-2 w-full sm:w-auto"
-                >
-                  <span>Ver proyecto completo</span>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
+                {/* CTA Button and Ver más Link */}
+                <div className="mt-8 space-y-4">
+                  <button 
+                    onClick={() => {
+                      setSelectedItem(null); // Close the popup
+                      setTimeout(() => navigateTo('contact'), 300); // Navigate to contact after close animation
+                    }}
+                    className="w-full bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-all hover:scale-105 hover:shadow-lg transform flex items-center justify-center space-x-2"
+                  >
+                    <span>Cotizar mi proyecto</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                  
+                  <button 
+                    onClick={() => handleViewFullProject(selectedItem)}
+                    className="w-full text-gray-600 hover:text-gray-900 px-6 py-3 rounded-full border border-gray-300 hover:border-gray-400 transition-all hover:scale-105 transform flex items-center justify-center space-x-2"
+                  >
+                    <span>Ver más</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1422,161 +1460,166 @@ export default function MainContainer() {
 
       {/* Contact Section */}
       <div 
-        id="contact" 
-        ref={contactAnimation.ref}
-        style={{
-          opacity: contactAnimation.isVisible ? 1 : 0,
-          transform: contactAnimation.isVisible ? 'translateY(0)' : 'translateY(3rem)',
-          transition: 'all 1s ease-out'
-        }}
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-light mb-12">Ponte en contacto</h2>
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="text-left">
-                <h3 className="text-2xl font-light mb-6">Información de contacto</h3>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-4 group">
-                    <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-colors">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <p className="text-gray-300 text-sm">Email</p>
-                      <p className="text-white">ferruscarea30@gmail.com</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4 group">
-                    <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-colors">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <p className="text-gray-300 text-sm">Celular</p>
-                      <p className="text-white">55 33 31 39 35</p>
-                    </div>
-                  </div>
-                </div>
+  id="contact" 
+  ref={contactAnimation.ref}
+  style={{
+    opacity: contactAnimation.isVisible ? 1 : 0,
+    transform: contactAnimation.isVisible ? 'translateY(0)' : 'translateY(3rem)',
+    transition: 'all 1s ease-out'
+  }}
+  className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white"
+>
+  <div className="max-w-7xl mx-auto">
+    {/* Header - centered on all screens */}
+    <div className="text-center mb-12 md:mb-16">
+      <h2 className="text-3xl sm:text-4xl font-light">Ponte en contacto</h2>
+    </div>
+    
+    {/* Two columns that stack on mobile */}
+    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+      {/* Left Column - Contact Info */}
+      <div className="space-y-8 order-2 lg:order-1">
+        <div className="text-left">
+          <h3 className="text-xl md:text-2xl font-light mb-6">Información de contacto</h3>
+          
+          <div className="space-y-6">
+            <div className="flex items-start sm:items-center space-x-4 group">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-700 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-colors flex-shrink-0 mt-1">
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
               </div>
-
-              {/* Social Media */}
-              <div className="text-left">
-                <h3 className="text-2xl font-light mb-6">Sígueme</h3>
-                <div className="flex space-x-4">
-                  {/* Behance */}
-                  <a href="https://www.behance.net/binec" className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 hover:scale-110 transition-all" aria-label="Behance">
-                     <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 1.425-2.842 1.425-1.83 0-2.403-.829-2.687-1.784-.591-1.993-1.777-2.537-3.547-2.537h-4.65v4.9h-3.502v-14h7.677c3.298 0 4.508 1.748 4.508 4.258 0 1.448-.558 2.741-1.816 3.467 1.807.767 2.204 2.308 1.861 4.271zm-14.476-6h3.203c1.668 0 2.133-.493 2.133-1.864 0-1.268-.482-1.788-1.668-1.788h-3.668v3.652zm0 6h4.202c1.297 0 2.095-.354 2.095-1.858 0-1.297-.675-1.945-2.331-1.945h-3.966v3.803z"/>
-                     </svg>
-                  </a>
-                  {/* Instagram */}
-                  <a href="https://www.instagram.com/ferrusca_rea" className="w-12 h-12 bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 rounded-full flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all" aria-label="Instagram">
-                     <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.78 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                     </svg>
-                  </a>
-                  {/* SoundCloud */}
-                  <a href="https://soundcloud.com/user-238668885/01-paraiso" className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-500 hover:scale-110 transition-all" aria-label="SoundCloud">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M11.56 8.87V17h-1.14v-8.13c0-.19-.15-.34-.34-.34s-.34.15-.34.34v8.13h-1.14V9.4c0-.19-.15-.34-.34-.34s-.34.15-.34.34v7.6h-1.14V11.57c0-.19-.15-.34-.34-.34s-.34.15-.34.34v5.43H5.3V13.46c0-.19-.15-.34-.34-.34s-.34.15-.34.34v3.54h-1.14v-2.36c0-.19-.15-.34-.34-.34s-.34.15-.34.34v2.36h-1.14v-1.4c0-.19-.15-.34-.34-.34s-.34.15-.34.34v1.4H0v.36c0 3.32 2.67 6 5.92 6H12v-9c0 3.84 3.16 7 7 7s7-3.16 7-7-3.16-7-7-7c-2.76 0-5.14 1.67-6.29 4.05-.05 0-.1-.02-.15-.02z"/>
-                    </svg>
-                  </a>
-                  {/* LinkedIn */}
-                  <a href="https://www.linkedin.com/in/david-ferrusca-a0800a104/" className="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 hover:scale-110 transition-all" aria-label="LinkedIn">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-                    </svg>
-                  </a>
-                </div>
+              <div className="text-left flex-1">
+                <p className="text-gray-300 text-sm">Email</p>
+                <p className="text-white text-base md:text-lg break-words">ferruscarea30@gmail.com</p>
               </div>
-
-              {/* Contact Form */}
-              <div className="bg-gray-800 rounded-lg p-8">
-                <h3 className="text-2xl font-light mb-6 text-left">Escribe un mensaje</h3>
-                {formSubmitted ? (
-                  <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <h4 className="text-xl font-medium mb-2">¡Gracias!</h4>
-                    <p className="text-gray-300">Tu mensaje se ha enviado correctamente</p>
-                  </div>
-                ) : (
-                  <form 
-                    onSubmit={handleFormSubmit}
-                    className="space-y-6"
-                  >
-                    <div>
-                      <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">Nombre</label>
-                      <input 
-                        type="text" 
-                        id="contact-name" 
-                        required 
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">Correo</label>
-                      <input 
-                        type="email" 
-                        id="contact-email" 
-                        required 
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-phone" className="block text-gray-300 font-medium mb-2 text-left">Teléfono</label>
-                      <input 
-                        type="tel" 
-                        id="contact-phone" 
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
-                        placeholder=""
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">Mensaje</label>
-                      <textarea 
-                        id="contact-message" 
-                        rows={4} 
-                        required 
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        className="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all" 
-                      />
-                    </div>
-                    <button 
-                      type="submit" 
-                      disabled={isSubmitting}
-                      className={`w-full py-3 rounded-full transition-all hover:shadow-lg transform font-medium ${
-                        isSubmitting 
-                          ? 'bg-gray-600 cursor-not-allowed' 
-                          : 'bg-white text-gray-900 hover:bg-gray-200 hover:scale-105'
-                      }`}
-                    >
-                      {isSubmitting ? 'SENDING...' : 'ENVIAR MENSAJE'}
-                    </button>
-                  </form>
-                )}
+            </div>
+            
+            <div className="flex items-start sm:items-center space-x-4 group">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-700 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-colors flex-shrink-0 mt-1">
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div className="text-left flex-1">
+                <p className="text-gray-300 text-sm">Celular</p>
+                <p className="text-white text-base md:text-lg">55 33 31 39 35</p>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Social Media */}
+        <div className="text-left">
+          <h3 className="text-xl md:text-2xl font-light mb-6">Sígueme</h3>
+          <div className="flex flex-wrap gap-3 md:gap-4">
+            {/* Behance */}
+            <a href="https://www.behance.net/binec" className="w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 hover:scale-110 transition-all" aria-label="Behance">
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 1.425-2.842 1.425-1.83 0-2.403-.829-2.687-1.784-.591-1.993-1.777-2.537-3.547-2.537h-4.65v4.9h-3.502v-14h7.677c3.298 0 4.508 1.748 4.508 4.258 0 1.448-.558 2.741-1.816 3.467 1.807.767 2.204 2.308 1.861 4.271zm-14.476-6h3.203c1.668 0 2.133-.493 2.133-1.864 0-1.268-.482-1.788-1.668-1.788h-3.668v3.652zm0 6h4.202c1.297 0 2.095-.354 2.095-1.858 0-1.297-.675-1.945-2.331-1.945h-3.966v3.803z"/>
+              </svg>
+            </a>
+            {/* Instagram */}
+            <a href="https://www.instagram.com/ferrusca_rea" className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 rounded-full flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all" aria-label="Instagram">
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.78 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            {/* SoundCloud */}
+            <a href="https://soundcloud.com/user-238668885/01-paraiso" className="w-10 h-10 md:w-12 md:h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-500 hover:scale-110 transition-all" aria-label="SoundCloud">
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M11.56 8.87V17h-1.14v-8.13c0-.19-.15-.34-.34-.34s-.34.15-.34.34v8.13h-1.14V9.4c0-.19-.15-.34-.34-.34s-.34.15-.34.34v7.6h-1.14V11.57c0-.19-.15-.34-.34-.34s-.34.15-.34.34v5.43H5.3V13.46c0-.19-.15-.34-.34-.34s-.34.15-.34.34v3.54h-1.14v-2.36c0-.19-.15-.34-.34-.34s-.34.15-.34.34v2.36h-1.14v-1.4c0-.19-.15-.34-.34-.34s-.34.15-.34.34v1.4H0v.36c0 3.32 2.67 6 5.92 6H12v-9c0 3.84 3.16 7 7 7s7-3.16 7-7-3.16-7-7-7c-2.76 0-5.14 1.67-6.29 4.05-.05 0-.1-.02-.15-.02z"/>
+              </svg>
+            </a>
+            {/* LinkedIn */}
+            <a href="https://www.linkedin.com/in/david-ferrusca-a0800a104/" className="w-10 h-10 md:w-12 md:h-12 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 hover:scale-110 transition-all" aria-label="LinkedIn">
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
+
+      {/* Right Column - Contact Form */}
+      <div className="bg-gray-800 rounded-lg p-6 md:p-8 order-1 lg:order-2">
+        <h3 className="text-xl md:text-2xl font-light mb-6">Escribe un mensaje</h3>
+        {formSubmitted ? (
+          <div className="text-center py-6 md:py-8">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+              <svg className="w-7 h-7 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h4 className="text-lg md:text-xl font-medium mb-2">¡Gracias!</h4>
+            <p className="text-gray-300 text-sm md:text-base">Tu mensaje se ha enviado correctamente</p>
+          </div>
+        ) : (
+          <form 
+            onSubmit={handleFormSubmit}
+            className="space-y-4 md:space-y-6"
+          >
+            <div>
+              <label htmlFor="contact-name" className="block text-gray-300 font-medium mb-2 text-left">Nombre</label>
+              <input 
+                type="text" 
+                id="contact-name" 
+                required 
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full bg-gray-700 border border-gray-600 rounded-md px-3 md:px-4 py-2 md:py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all text-sm md:text-base" 
+              />
+            </div>
+            <div>
+              <label htmlFor="contact-email" className="block text-gray-300 font-medium mb-2 text-left">Correo</label>
+              <input 
+                type="email" 
+                id="contact-email" 
+                required 
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full bg-gray-700 border border-gray-600 rounded-md px-3 md:px-4 py-2 md:py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all text-sm md:text-base" 
+              />
+            </div>
+            <div>
+              <label htmlFor="contact-phone" className="block text-gray-300 font-medium mb-2 text-left">Teléfono</label>
+              <input 
+                type="tel" 
+                id="contact-phone" 
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full bg-gray-700 border border-gray-600 rounded-md px-3 md:px-4 py-2 md:py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all text-sm md:text-base" 
+                placeholder=""
+              />
+            </div>
+            <div>
+              <label htmlFor="contact-message" className="block text-gray-300 font-medium mb-2 text-left">Mensaje</label>
+              <textarea 
+                id="contact-message" 
+                rows={4} 
+                required 
+                value={formData.message}
+                onChange={handleInputChange}
+                className="w-full bg-gray-700 border border-gray-600 rounded-md px-3 md:px-4 py-2 md:py-3 text-white focus:outline-none focus:ring-2 focus:ring-white transition-all text-sm md:text-base" 
+              />
+            </div>
+            <button 
+              type="submit" 
+              disabled={isSubmitting}
+              className={`w-full py-3 rounded-full transition-all hover:shadow-lg transform font-medium text-sm md:text-base ${
+                isSubmitting 
+                  ? 'bg-gray-600 cursor-not-allowed' 
+                  : 'bg-white text-gray-900 hover:bg-gray-200 hover:scale-105'
+              }`}
+            >
+              {isSubmitting ? 'SENDING...' : 'ENVIAR MENSAJE'}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
 
       <Footer />
       <WhatsAppButton />
