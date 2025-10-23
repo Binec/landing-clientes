@@ -41,21 +41,21 @@ const webDesignProjects: GalleryItem[] = [
     title: 'Hako - Identidad de Marca', 
     category: 'Creación de Marca, Diseño Web', 
     description: 'Diseño completo de identidad de marca y sitio web corporativo con enfoque moderno y minimalista.', 
-    fullDescription: 'Hako es una marca emergente en el sector de productos sostenibles que buscaba establecer una identidad sólida en el mercado. Desarrollamos una identidad visual completa que refleja sus valores de sostenibilidad y diseño consciente, junto con un sitio web corporativo que comunica efectivamente su propuesta de valor.',
+    fullDescription: 'Hako es una marca emergente en el sector de equipos médicos que buscaba establecer una identidad sólida en el mercado. Desarrollamos una identidad visual completa que refleja sus valores de sostenibilidad y diseño consciente, junto con un sitio web corporativo que comunica efectivamente su propuesta de valor.',
     challenge: 'La marca necesitaba diferenciarse en un mercado saturado de productos similares, comunicando autenticidad y compromiso ambiental sin caer en clichés del sector ecológico.',
     solution: 'Creamos un sistema de identidad basado en formas orgánicas y una paleta de colores terrosos, combinado con tipografía moderna. El sitio web incorpora micro-interacciones que guían al usuario a través del proceso de descubrimiento de la marca.',
     services: ['Brand Strategy', 'Logo Design', 'Visual Identity', 'Web Design', 'Content Creation'],
     client: 'Hako Sustainable Goods',
     duration: '6 semanas',
-    year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    year: '2025',
+    coverImage: 'assets/projects/project-1/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      'assets/projects/project-1/image1.jpg',
+      'assets/projects/project-1/image2.jpg',
+      'assets/projects/project-1/image3.jpg',
+      'assets/projects/project-1/image4.jpg',
+      'assets/projects/project-1/image5.jpg',
+      'assets/projects/project-1/image6.jpg',
     ]
   },
   { 
@@ -70,14 +70,14 @@ const webDesignProjects: GalleryItem[] = [
     client: 'TechFlow Solutions',
     duration: '8 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'assets/projects/project-2/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      'assets/projects/project-2/image1.jpg',
+      'assets/projects/project-2/image2.jpg',
+      'assets/projects/project-2/image3.jpg',
+      'assets/projects/project-2/image4.jpg',
+      'assets/projects/project-2/image5.jpg',
+      'assets/projects/project-2/image6.jpg',
     ]
   },
   { 
@@ -92,14 +92,14 @@ const webDesignProjects: GalleryItem[] = [
     client: 'Grupo Kalte',
     duration: '10 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'assets/projects/project-3/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      'assets/projects/project-3/image1.jpg',
+      'assets/projects/project-3/image2.jpg',
+      'assets/projects/project-3/image3.jpg',
+      'assets/projects/project-3/image4.jpg',
+      'assets/projects/project-3/image5.jpg',
+      'assets/projects/project-3/image6.jpg',
     ]
   },
   { 
@@ -114,14 +114,14 @@ const webDesignProjects: GalleryItem[] = [
     client: 'Tomodachi Photography',
     duration: '4 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'assets/projects/project-4/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      'assets/projects/project-4/image1.jpg',
+      'assets/projects/project-4/image2.jpg',
+      'assets/projects/project-4/image3.jpg',
+      'assets/projects/project-4/image4.jpg',
+      'assets/projects/project-4/image5.jpg',
+      'assets/projects/project-4/image6.jpg',
     ]
   },
 ];
@@ -140,14 +140,14 @@ const webAppsProjects: GalleryItem[] = [
     client: 'AI27 Technologies',
     duration: '12 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'assets/projects/project-5/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      'assets/projects/project-5/image1.jpg',
+      'assets/projects/project-5/image2.jpg',
+      'assets/projects/project-5/image3.jpg',
+      'assets/projects/project-5/image4.jpg',
+      'assets/projects/project-5/image5.jpg',
+      'assets/projects/project-5/image6.jpg',
     ]
   },
   { 
@@ -162,14 +162,14 @@ const webAppsProjects: GalleryItem[] = [
     client: 'CloudSync Inc',
     duration: '14 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'assets/projects/project-6/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      'assets/projects/project-6/image1.jpg',
+      'assets/projects/project-6/image2.jpg',
+      'assets/projects/project-6/image3.jpg',
+      'assets/projects/project-6/image4.jpg',
+      'assets/projects/project-6/image5.jpg',
+      'assets/projects/project-6/image6.jpg',
     ]
   },
   { 
@@ -184,14 +184,14 @@ const webAppsProjects: GalleryItem[] = [
     client: 'TaskMaster Solutions',
     duration: '16 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'assets/projects/project-7/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      'assets/projects/project-7/image1.jpg',
+      'assets/projects/project-7/image2.jpg',
+      'assets/projects/project-7/image3.jpg',
+      'assets/projects/project-7/image4.jpg',
+      'assets/projects/project-7/image5.jpg',
+      'assets/projects/project-7/image6.jpg',
     ]
   },
   { 
@@ -206,14 +206,14 @@ const webAppsProjects: GalleryItem[] = [
     client: 'DataViz Analytics',
     duration: '18 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'assets/projects/project-8/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      'assets/projects/project-8/image1.jpg',
+      'assets/projects/project-8/image2.jpg',
+      'assets/projects/project-8/image3.jpg',
+      'assets/projects/project-8/image4.jpg',
+      'assets/projects/project-8/image5.jpg',
+      'assets/projects/project-8/image6.jpg',
     ]
   },
 ];
@@ -232,14 +232,14 @@ const marketingProjects: GalleryItem[] = [
     client: 'Le Pain Quotidien',
     duration: '16 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'assets/projects/project-9/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      'assets/projects/project-9/image1.jpg',
+      'assets/projects/project-9/image2.jpg',
+      'assets/projects/project-9/image3.jpg',
+      'assets/projects/project-9/image4.jpg',
+      'assets/projects/project-9/image5.jpg',
+      'assets/projects/project-9/image6.jpg',
     ]
   },
   { 
@@ -254,14 +254,14 @@ const marketingProjects: GalleryItem[] = [
     client: 'FitLife App',
     duration: '12 semanas',
     year: '2023',
-    coverImage: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    coverImage: 'assets/projects/project-10/cover.jpg',
     images: [
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      'assets/projects/project-10/image1.jpg',
+      'assets/projects/project-10/image2.jpg',
+      'assets/projects/project-10/image3.jpg',
+      'assets/projects/project-10/image4.jpg',
+      'assets/projects/project-10/image5.jpg',
+      'assets/projects/project-10/image6.jpg',
     ]
   },
   { 
