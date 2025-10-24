@@ -33,7 +33,79 @@ interface Service {
   color: string;
   projects: GalleryItem[];
 }
+// 3D Cube Component - Half Size with padding
+const RotatingCube = ({ color = 'indigo' }) => {
+  const cubeRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (cubeRef.current) {
+        const scrollY = window.scrollY;
+        const rotation = scrollY * 0.2;
+        cubeRef.current.style.transform = `rotateY(${rotation}deg) rotateX(${rotation * 0.5}deg)`;
+      }
+    };
 
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const colorClasses = {
+    indigo: 'bg-indigo-600 border-indigo-700',
+    blue: 'bg-blue-600 border-blue-700',
+    purple: 'bg-purple-600 border-purple-700',
+    green: 'bg-green-600 border-green-700',
+    pink: 'bg-pink-600 border-pink-700'
+  };
+
+  return (
+    <div className="relative w-10 h-10 mx-auto mb-6 pt-4 perspective-1000"> {/* Added pt-4 here */}
+      <div 
+        ref={cubeRef}
+        className="relative w-full h-full preserve-3d transition-transform duration-150 ease-out"
+        style={{ transformStyle: 'preserve-3d' }}
+      >
+        {/* Front face */}
+        <div 
+          className={`absolute w-full h-full rounded-2xl ${colorClasses[color as keyof typeof colorClasses]} border-2 flex items-center justify-center`}
+          style={{ transform: 'translateZ(10px)' }}
+        >
+          <div className="w-2 h-2 bg-white bg-opacity-20 rounded-full"></div>
+        </div>
+        
+        {/* Back face */}
+        <div 
+          className={`absolute w-full h-full rounded-2xl ${colorClasses[color as keyof typeof colorClasses]} border-2`}
+          style={{ transform: 'rotateY(180deg) translateZ(10px)' }}
+        ></div>
+        
+        {/* Right face */}
+        <div 
+          className={`absolute w-5 h-full rounded-2xl ${colorClasses[color as keyof typeof colorClasses]} border-2`}
+          style={{ transform: 'rotateY(90deg) translateZ(15px)' }}
+        ></div>
+        
+        {/* Left face */}
+        <div 
+          className={`absolute w-5 h-full rounded-2xl ${colorClasses[color as keyof typeof colorClasses]} border-2`}
+          style={{ transform: 'rotateY(-90deg) translateZ(15px)' }}
+        ></div>
+        
+        {/* Top face */}
+        <div 
+          className={`absolute w-full h-5 rounded-2xl ${colorClasses[color as keyof typeof colorClasses]} border-2`}
+          style={{ transform: 'rotateX(90deg) translateZ(15px)' }}
+        ></div>
+        
+        {/* Bottom face */}
+        <div 
+          className={`absolute w-full h-5 rounded-2xl ${colorClasses[color as keyof typeof colorClasses]} border-2`}
+          style={{ transform: 'rotateX(-90deg) translateZ(15px)' }}
+        ></div>
+      </div>
+    </div>
+  );
+};
 // Web Design Projects
 const webDesignProjects: GalleryItem[] = [
   { 
@@ -1173,7 +1245,6 @@ export default function MainContainer() {
       </div>
 
       {/* Services Section */}
-      {/* Services Section - Flexbox approach */}
       <div 
         id="services" 
         ref={servicesAnimation.ref}
@@ -1195,7 +1266,7 @@ export default function MainContainer() {
                 onClick={() => handleServiceClick(service)}
                 className="text-center group cursor-pointer flex flex-col h-full w-full sm:w-80"
               >
-                {/* Keep all the icon and content code exactly the same */}
+                {/* Service Icon */}
                 <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${
                   service.color === 'blue' ? 'bg-blue-100 group-hover:bg-blue-200' :
                   service.color === 'purple' ? 'bg-purple-100 group-hover:bg-purple-200' :
@@ -1227,13 +1298,12 @@ export default function MainContainer() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   )}
-                  {/* 3D Modeling Icon */}
+                  {/* 3D Modeling Icon - Replaced with rotating cube */}
                   {service.color === 'indigo' && (
-                    <svg className="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m0 0l-2-1m2 1v2.5M14 4l-2 1m0 0l-2-1m2 1v2.5" />
-                    </svg>
+                    <RotatingCube color="indigo" />
                   )}
                 </div>
+                
                 <h3 className={`text-2xl font-medium text-gray-900 mb-4 group-hover:transition-colors ${
                   service.color === 'blue' ? 'group-hover:text-blue-600' :
                   service.color === 'purple' ? 'group-hover:text-purple-600' :
