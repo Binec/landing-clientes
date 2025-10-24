@@ -76,7 +76,7 @@ const RotatingCube = ({ color = 'indigo' }) => {
         {/* Back face */}
         <div 
           className={`absolute w-full h-full rounded-2xl ${colorClasses[color as keyof typeof colorClasses]} border-2`}
-          style={{ transform: 'rotateY(180deg) translateZ(10px)' }}
+          style={{ transform: 'rotateY(180deg) translateZ(15px)' }}
         ></div>
         
         {/* Right face */}
