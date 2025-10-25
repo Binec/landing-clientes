@@ -108,29 +108,53 @@ const RotatingCube = ({ color = 'indigo' }) => {
   );
 };
 
-// Cursor Follower Component - For background layer
+// Cursor Follower Component - For background layer (Desktop only)
 const CursorFollower = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    // Check if device is desktop on component mount
+    const checkDevice = () => {
+      const isDesktopDevice = window.innerWidth >= 768; // 768px is typical breakpoint for tablets
+      setIsDesktop(isDesktopDevice);
+    };
+
+    checkDevice();
+
     const handleMouseMove = (e: MouseEvent) => {
+      if (!isDesktop) return;
+      
       setPosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
     };
 
     const handleMouseLeave = () => {
+      if (!isDesktop) return;
       setIsVisible(false);
+    };
+
+    // Update device type on resize
+    const handleResize = () => {
+      checkDevice();
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isDesktop]);
+
+  // Don't render anything on mobile
+  if (!isDesktop) {
+    return null;
+  }
 
   return (
     <div
@@ -147,6 +171,8 @@ const CursorFollower = () => {
         transform: 'translate(-50%, -50%)',
         transition: 'opacity 0.3s ease',
         mixBlendMode: 'difference',
+        pointerEvents: 'none', // Add this to prevent interference with clicks
+        zIndex: 0, // Ensure it stays in the background
       }}
     />
   );
@@ -178,15 +204,15 @@ const webDesignProjects: GalleryItem[] = [
   },
   { 
     id: 2, 
-    title: 'TechFlow - Portal Corporativo', 
-    category: 'Diseño Web, UX/UI', 
-    description: 'Portal corporativo moderno con dashboard interactivo y experiencia de usuario optimizada.', 
-    fullDescription: 'TechFlow necesitaba un portal corporativo que permitiera a sus empleados acceder a información centralizada. Diseñamos una interfaz intuitiva con navegación clara y componentes reutilizables.',
-    challenge: 'Crear una interfaz que fuera accesible para usuarios con diferentes niveles de experiencia técnica.',
-    solution: 'Implementamos un diseño limpio con iconografía clara y flujos de navegación intuitivos. Cada sección está optimizada para reducir la curva de aprendizaje.',
-    services: ['Web Design', 'UX Research', 'Prototyping', 'Visual Design'],
-    client: 'TechFlow Solutions',
-    duration: '8 semanas',
+    title: 'AI27 - Product Launch', 
+    category: 'Web App, Native App, Diseño Web, Diseño UX', 
+    description: 'Diseño de experiencia de usuario, aplicaciones web, nativas y sitio web. Implementación de AI para predicción de riesgos en logística.', 
+    fullDescription: 'AI27 es una plataforma de inteligencia artificial especializada en la predicción de riesgos logísticos para empresas de transporte y cadena de suministro. Desarrollamos un ecosistema digital completo que incluye dashboard web, aplicación móvil y sitio corporativo.',
+    challenge: 'Crear interfaces intuitivas para visualizar datos complejos de predicción de riesgos, haciendo accesible la inteligencia artificial a usuarios no técnicos en el sector logístico.',
+    solution: 'Diseñamos un sistema de visualización de datos con gráficos interactivos y alertas contextuales. Implementamos un diseño responsivo que funciona igualmente bien en desktop y dispositivos móviles para profesionales en movimiento.',
+    services: ['UI/UX Design', 'Web Application', 'Native App', 'AI Integration', 'Dashboard Design'],
+    client: 'AI27 Technologies',
+    duration: '12 semanas',
     year: '2023',
     coverImage: 'assets/projects/project-2/cover.jpg',
     images: [
@@ -200,16 +226,16 @@ const webDesignProjects: GalleryItem[] = [
   },
   { 
     id: 3, 
-    title: 'Grupo Kalte - E-commerce', 
-    category: 'Diseño Web, Creación de Contenido', 
-    description: 'Diseño moderno y funcional para tienda online con experiencia de usuario optimizada.', 
-    fullDescription: 'Grupo Kalte, distribuidor de equipos de refrigeración industrial, necesitaba modernizar su presencia digital y establecer un canal de ventas online eficiente. Desarrollamos una plataforma e-commerce robusta con catálogo complejo y sistema de cotizaciones integrado.',
-    challenge: 'Manejar un catálogo con más de 500 productos técnicos con múltiples variantes y especificaciones, manteniendo una experiencia de compra simple y accesible.',
-    solution: 'Implementamos filtros avanzados y comparadores de productos, junto con un sistema de cotizaciones online que permite a los clientes solicitar precios personalizados para equipos industriales.',
-    services: ['E-commerce Development', 'UX Design', 'Content Strategy', 'Product Photography', 'SEO Optimization'],
-    client: 'Grupo Kalte',
-    duration: '10 semanas',
-    year: '2023',
+    title: 'Modelado y animaciones 3D', 
+    category: 'Diseño Web, Realidad Virtual y Aumentada, Creación de Contenido, Renders', 
+    description: 'Modelado 3D con Blender, Cinema 4d, Maya.', 
+    fullDescription:'Desde la recepción de la idea, bocetaje, modealo, texurizado, iluminación, rigging, exportación de assets para optimización de web y aplicaciones hasta proyectos de realidad virtual y aumentada con frame works de html como model-viwer y aframe, three.js de javascript.',
+    challenge: 'Resolver las necesidades cliente con nuesvas tecnologías. La investigación y la implementación de ellas y el tiempo de aplicación.',
+    solution: 'Especialización en metodologías de investigación y aplicación para encontrar el camino más rápido y funcional para el diseño y el desarrollo.',
+    services: ['UX Research', 'UX Design', 'Content Strategy', 'Modeling', 'Rendering', 'Rigging',],
+    client: 'Gentera, Binec',
+    duration: '8 años',
+    year: '2022',
     coverImage: 'assets/projects/project-3/cover.jpg',
     images: [
       'assets/projects/project-3/image1.jpg',
@@ -270,24 +296,24 @@ const webAppsProjects: GalleryItem[] = [
   },
   { 
     id: 6, 
-    title: 'CloudSync - Gestor de Archivos', 
-    category: 'Web App, Cloud Storage', 
-    description: 'Aplicación web para gestión y sincronización de archivos en la nube con interfaz intuitiva.', 
-    fullDescription: 'CloudSync es una plataforma de almacenamiento en la nube diseñada para equipos de trabajo remoto. Desarrollamos una aplicación web completa con sincronización en tiempo real, control de versiones y colaboración integrada.',
-    challenge: 'Manejar sincronización de archivos en tiempo real sin afectar el rendimiento de la aplicación, manteniendo una interfaz responsiva y fluida.',
-    solution: 'Implementamos WebSockets para sincronización en tiempo real, optimización de caché y lazy loading de archivos. La interfaz utiliza drag-and-drop intuitivo y vista previa de archivos.',
-    services: ['Web Application', 'Real-time Sync', 'Cloud Architecture', 'UI/UX Design', 'Security'],
-    client: 'CloudSync Inc',
-    duration: '14 semanas',
+    title: 'Grupo Kalte - E-commerce', 
+    category: 'Diseño Web, Creación de Contenido', 
+    description: 'Diseño moderno y funcional para tienda online con experiencia de usuario optimizada.', 
+    fullDescription: 'Grupo Kalte, distribuidor de equipos de refrigeración industrial, necesitaba modernizar su presencia digital y establecer un canal de ventas online eficiente. Desarrollamos una plataforma e-commerce robusta con catálogo complejo y sistema de cotizaciones integrado.',
+    challenge: 'Manejar un catálogo con más de 500 productos técnicos con múltiples variantes y especificaciones, manteniendo una experiencia de compra simple y accesible.',
+    solution: 'Implementamos filtros avanzados y comparadores de productos, junto con un sistema de cotizaciones online que permite a los clientes solicitar precios personalizados para equipos industriales.',
+    services: ['E-commerce Development', 'UX Design', 'Content Strategy', 'Product Photography', 'SEO Optimization'],
+    client: 'Grupo Kalte',
+    duration: '10 semanas',
     year: '2023',
-    coverImage: 'assets/projects/project-6/cover.jpg',
+    coverImage: 'assets/projects/project-3/cover.jpg',
     images: [
-      'assets/projects/project-6/image1.jpg',
-      'assets/projects/project-6/image2.jpg',
-      'assets/projects/project-6/image3.jpg',
-      'assets/projects/project-6/image4.jpg',
-      'assets/projects/project-6/image5.jpg',
-      'assets/projects/project-6/image6.jpg',
+      'assets/projects/project-3/image1.jpg',
+      'assets/projects/project-3/image2.jpg',
+      'assets/projects/project-3/image3.jpg',
+      'assets/projects/project-3/image4.jpg',
+      'assets/projects/project-3/image5.jpg',
+      'assets/projects/project-3/image6.jpg',
     ]
   },
   { 
