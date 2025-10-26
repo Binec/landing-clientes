@@ -220,8 +220,8 @@ const webDesignProjects: GalleryItem[] = [
       'assets/projects/project-2/image2.jpg',
       'assets/projects/project-2/image3.jpg',
       'assets/projects/project-2/image4.jpg',
-      'assets/projects/project-2/image5.png',
-      'assets/projects/project-2/image6.jpg',
+      'assets/projects/project-2/image5.jpg',
+      'assets/projects/project-2/image6.png',
     ]
   },
   { 
