@@ -220,8 +220,8 @@ const webDesignProjects: GalleryItem[] = [
       'assets/projects/project-2/image2.jpg',
       'assets/projects/project-2/image3.jpg',
       'assets/projects/project-2/image4.jpg',
-      'assets/projects/project-2/image5.jpg',
-      'assets/projects/project-2/image6.png',
+      'assets/projects/project-2/image5.png',
+      'assets/projects/project-2/image6.jpg',
     ]
   },
   { 
@@ -243,7 +243,7 @@ const webDesignProjects: GalleryItem[] = [
       'assets/projects/project-3/image3.jpg',
       'assets/projects/project-3/image4.jpg',
       'assets/projects/project-3/image5.jpg',
-      'assets/projects/project-3/image6.jpg',
+      'assets/projects/project-3/image6.png',
     ]
   },
   { 
@@ -306,14 +306,14 @@ const webAppsProjects: GalleryItem[] = [
     client: 'Grupo Kalte',
     duration: '10 semanas',
     year: '2023',
-    coverImage: 'assets/projects/project-3/cover.jpg',
+    coverImage: 'assets/projects/project-6/cover.jpg',
     images: [
-      'assets/projects/project-3/image1.jpg',
-      'assets/projects/project-3/image2.jpg',
-      'assets/projects/project-3/image3.jpg',
-      'assets/projects/project-3/image4.jpg',
-      'assets/projects/project-3/image5.jpg',
-      'assets/projects/project-3/image6.jpg',
+      'assets/projects/project-6/image1.jpg',
+      'assets/projects/project-6/image2.jpg',
+      'assets/projects/project-6/image3.jpg',
+      'assets/projects/project-6/image4.jpg',
+      'assets/projects/project-6/image5.jpg',
+      'assets/projects/project-6/image6.jpg',
     ]
   },
   { 
